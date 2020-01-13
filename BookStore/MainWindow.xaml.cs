@@ -21,9 +21,15 @@ namespace BookStore
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public List<Item> items { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            List<Item> items = new List<Item>();
+            items.Add(new Item() { Name = "Eran", ItemCode =1, PrintDate =DateTime.Now, Price = 10, Description = "fdsafa"});
+            items.Add(new Item() { Name = "Jane Doe"});
+            items.Add(new Item() { Name = "Sammy Doe"});
+            listViewItems.ItemsSource = items;
         }
     }
 }
