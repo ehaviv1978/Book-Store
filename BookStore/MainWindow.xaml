@@ -8,8 +8,8 @@
         Title="Book Store Manager" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblUser" Content="User:  Eran Haviv - Manager" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
-        <ListView x:Name="listViewItems" Margin="300,41,10,10">
+        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <ListView x:Name="listViewItems" Margin="240,41,10,10">
             <ListView.View>
                 <GridView x:Name="GridViewItems">
                     <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
@@ -17,14 +17,18 @@
                     <GridViewColumn Header="Edition" Width="40" DisplayMemberBinding="{Binding Edition}" />
                     <GridViewColumn Header="Stock" Width="40" DisplayMemberBinding="{Binding Stock}" />
                     <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
 
                 </GridView>
             </ListView.View>
-        
+
         </ListView>
-        <Label Content="Store Items" HorizontalAlignment="Left" Margin="300,4,0,0" VerticalAlignment="Top" Width="123" FontWeight="Bold" FontSize="18"/>
+        <Label Content="Store Items" HorizontalAlignment="Left" Margin="240,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
         <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" Text="Serch Item" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14"/>
         <Button x:Name="BtnSerch" Content="Serch" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50"/>
+        <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="335,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
+        <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="483,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
+        <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="414,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
 
     </Grid>
 </Window>

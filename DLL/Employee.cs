@@ -4,8 +4,10 @@ using System.Text;
 
 namespace DLL
 {
-    public class Employee
+    public enum EPosition { Manager, Seller };
+    public class Employee :Person
     {
-        public string Position { get; set; }
+        public EPosition Position { get; set; }
+        public string Password { get; set; }
     }
 }

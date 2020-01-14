@@ -6,6 +6,6 @@ namespace DLL
 {
     public class Customer :Person
     {
-
+        public List<Transaction> BuyHistory;
     }
 }

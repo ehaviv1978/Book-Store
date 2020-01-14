@@ -10,7 +10,7 @@ namespace DLL
         public string LastName { get; set; }
         public DateTime Birthdate { get; set; }
         public string Adress { get; set; }
-        public string PhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
         public string Email { get; set; }
     }
 }
