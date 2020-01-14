@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Employee Log In" Height="150" Width="280">
+        Title="Employee Log In" Height="250" Width="400">
     <Grid>
-        <Label Content="Enter Name:" HorizontalAlignment="Left" Margin="48,23,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="127,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Enter Password:" HorizontalAlignment="Left" Margin="31,53,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="127,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnLogIn" Content="Log In" HorizontalAlignment="Left" Margin="207,90,0,0" VerticalAlignment="Top" Click="btnLogIn_Click"/>
+        <Label Content="Enter Name:" HorizontalAlignment="Left" Margin="74,54,0,0" VerticalAlignment="Top" FontWeight="Normal" FontSize="18"/>
+        <TextBox x:Name="TextBoxNameLog" HorizontalAlignment="Left" Margin="191,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="18"/>
+        <PasswordBox x:Name="TextBoxPasswordLog" HorizontalAlignment="Left" Margin="192,104,0,0" VerticalAlignment="Top" Width="170" FontSize="18"/>
+        <Label Content="Enter Password:" HorizontalAlignment="Left" Margin="49,100,0,0" VerticalAlignment="Top" FontWeight="Normal" FontSize="18"/>
+        <Button x:Name="btnLogIn" Content="Log In" HorizontalAlignment="Left" Margin="284,166,0,0" VerticalAlignment="Top" Click="btnLogIn_Click" FontSize="18" FontWeight="Bold" Width="76" Height="34"/>
+
 
     </Grid>
 </Window>

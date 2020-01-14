@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Book Store Manager" Height="450" Width="800">
     <Grid>
-        <Label x:Name="lblUser" Content="User:  Eran Haviv - Manager" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
-        <ListView x:Name="listViewItems" Margin="240,41,10,10">
+        <Label x:Name="lblUser" Content="User:  Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <ListView x:Name="listViewItems" Margin="240,41,10,54">
             <ListView.View>
                 <GridView x:Name="GridViewItems">
                     <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
@@ -29,6 +29,9 @@
         <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="335,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
         <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="483,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
         <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="414,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
+        <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
 
     </Grid>
 </Window>

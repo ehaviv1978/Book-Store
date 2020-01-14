@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DLL;
+using Server;
 
 namespace GUI
 {
@@ -23,10 +25,33 @@ namespace GUI
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+        {       
+            bool logIn = false;
+            string logString = TextBoxNameLog.Text.Replace(" ", "");
+            logString =logString.ToLower();
+            foreach (Employee employee in DB.DbEmployees)
+            {
+                string name = employee.FirstName + employee.LastName;
+                name = name.ToLower();
+                if (logString == name && TextBoxPasswordLog.Password == employee.Password)
+                {
+                    logIn = true;
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.lblUser.Content = $"User: {employee.FirstName} {employee.LastName} - {employee.Position}";
+                    if (employee.Position == EPosition.Seller)
+                    {
+                        mainWindow.btnRemoveItem.IsEnabled = false;
+                        mainWindow.btnAddItem.IsEnabled = false;
+                    }
+                    mainWindow.Show();
+                    this.Close();
+                }
+            }
+            if (!logIn)
+            {
+                TextBoxPasswordLog.Password = "";
+                MessageBox.Show("Incorect User name or password, try again.");
+            }
         }
     }
 }
