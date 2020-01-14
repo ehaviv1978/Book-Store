@@ -29,9 +29,9 @@
         <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="335,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
         <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="483,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
         <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="414,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
-        <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
-        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
 
     </Grid>
 </Window>
