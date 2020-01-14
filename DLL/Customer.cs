@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookStoreC
+namespace DLL
 {
-    class Customer :Person
+    public class Customer :Person
     {
 
     }

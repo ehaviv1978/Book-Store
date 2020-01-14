@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookStoreC
+namespace DLL
 {
     public class Person
     {
-        public string FirstName;
-        public string LastName;
-        public DateTime Birthdate;
-        public string Adress;
-        public string PhoneNumber;
-        public string Email;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string Adress { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
     }
 }

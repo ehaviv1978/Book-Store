@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookStoreC
+namespace DLL
 {
-    public enum BGenre { Drama, Fantasy, Children, Horror, ScienceFiction, Thriller, Novel };
+    public enum BGenre { Drama, Fantasy, Children, Horror, ScienceFiction, Thriller, Novel,SciFi };
     public class Book : Item
     {
-        public string Author;
-        public BGenre Genre;
-        public int YearPublished;
-        public int Pages;
-        public int ISBN;
-        public int Edition;
+        public string Author { get; set; }
+        //public enum Genre { Drama, Fantasy, Children, Horror, ScienceFiction, Thriller, Novel, SciFi };
+        public BGenre Genre { get; set; }
+        public int YearPublished { get; set; }
+        public int Pages { get; set; }
+        public int ISBN { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookStoreC
+namespace DLL
 {
-    class Employee
+    public class Employee
     {
-        public string Position;
+        public string Position { get; set; }
     }
 }
