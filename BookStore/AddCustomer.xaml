@@ -16,12 +16,12 @@
         <Label Content="Address:" HorizontalAlignment="Left" Margin="77,174,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label Content="Phone Number:" HorizontalAlignment="Left" Margin="29,208,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="92,242,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Margin="153,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <DatePicker HorizontalAlignment="Left" Margin="153,142,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="226,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Margin="153,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="153,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="153,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="153,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="153,142,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="226,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26" Click="btnAdd_Click"/>
     </Grid>
 </Page>

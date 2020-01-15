@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DLL;
+using Server;
 
 namespace GUI
 {
@@ -21,6 +23,28 @@ namespace GUI
         public AddCustomer()
         {
             InitializeComponent();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtFirstName.Text != "" && txtLastName.Text != "" && txtPhoneNumber != null)
+            {
+                Customer newCustomer = new Customer();
+                newCustomer.FirstName = txtFirstName.Text;
+                newCustomer.LastName = txtLastName.Text;
+                newCustomer.Birthdate = datePickerBirthDate.SelectedDate;
+                newCustomer.Adress = txtAddress.Text;
+                newCustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                newCustomer.Email = txtEmail.Text;
+
+                DB.DbCustomers.Add(newCustomer);
+                MessageBox.Show("New Customer Add");
+            }
+            else
+            {
+                MessageBox.Show("First Name, Last Name and phone number are required fields");
+            }
+
         }
     }
 }
