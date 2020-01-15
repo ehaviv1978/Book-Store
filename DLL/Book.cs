@@ -13,5 +13,11 @@ namespace DLL
         public int YearPublished { get; set; }
         public int Pages { get; set; }
         public long ISBN { get; set; }
+
+        public Book()
+        {
+            CodeGenerator++;
+            ItemCode = CodeGenerator;
+        }
     }
 }

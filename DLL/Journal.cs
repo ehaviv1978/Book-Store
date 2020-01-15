@@ -9,5 +9,11 @@ namespace DLL
     {
         public JGenre Genre { get; set; }
         public DateTime PrintDate { get; set; }
+
+        public Journal()
+        {
+            CodeGenerator++;
+            ItemCode = CodeGenerator;
+        }
     }
 }

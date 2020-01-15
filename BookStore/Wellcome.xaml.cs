@@ -35,7 +35,7 @@ namespace GUI
             {
                 FirstName = "Eran",
                 LastName = "Haviv",
-                Password = "4321",
+                Password = "1",
                 Position = EPosition.Manager,
                 PhoneNumber = 0542174644,
                 Email = "ehaviv@hotmail.com",
@@ -44,9 +44,9 @@ namespace GUI
             });
             DB.DbEmployees.Add(new Employee()
             {
-                FirstName = "Lior",
-                LastName = "Din",
-                Password = "1234",
+                FirstName = "Gal",
+                LastName = "Baz",
+                Password = "1",
                 Position = EPosition.Seller,
                 PhoneNumber = 0527007007,
                 Email = "DinL@gmail.com",
@@ -59,7 +59,6 @@ namespace GUI
         {
             DB.DbBooks.Add(new Book()
             {
-                ItemCode = 99,
                 Name = "Dune",
                 Author = "Frank Herbert",
                 Stock = 5,
@@ -72,7 +71,6 @@ namespace GUI
             });
             DB.DbBooks.Add(new Book()
             {
-                ItemCode = 77,
                 Name = "The English Patient",
                 Author = "Michael Ondaatje",
                 Stock = 2,
@@ -85,7 +83,6 @@ namespace GUI
             });
             DB.DbBooks.Add(new Book()
             {
-                ItemCode = 111,
                 Name = "Gone with the Wind",
                 Author = "Margaret Mitchell",
                 Stock = 1,
@@ -98,7 +95,6 @@ namespace GUI
             });
             DB.DbBooks.Add(new Book()
             {
-                ItemCode = 222,
                 Name = "The Hobbit",
                 Author = "J. R. R. Tolkien",
                 Stock = 3,
@@ -115,7 +111,6 @@ namespace GUI
         {
             DB.DbJournals.Add(new Journal()
             {
-                ItemCode = 880,
                 Name = "Popular Science",
                 Stock = 2,
                 Price = 4.99,
@@ -126,7 +121,6 @@ namespace GUI
             });
             DB.DbJournals.Add(new Journal()
             {
-                ItemCode = 890,
                 Name = "Popular Science",
                 Stock = 5,
                 Price = 4.99,
@@ -137,7 +131,6 @@ namespace GUI
             });
             DB.DbJournals.Add(new Journal()
             {
-                ItemCode = 770,
                 Name = "Vogue",
                 Stock = 7,
                 Price = 6.99,
@@ -148,7 +141,6 @@ namespace GUI
             });
             DB.DbJournals.Add(new Journal()
             {
-                ItemCode = 780,
                 Name = "Vogue",
                 Stock = 7,
                 Price = 6.99,

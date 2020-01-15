@@ -4,6 +4,7 @@ namespace DLL
 {
     public class Item
     {
+        public static int CodeGenerator = 1000;
         public int ItemCode { get; set; }
         public string Name { get; set; }
         public int Stock { get; set; }
