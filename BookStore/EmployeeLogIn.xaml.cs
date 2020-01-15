@@ -40,8 +40,9 @@ namespace GUI
                     mainWindow.lblUser.Content = $"{employee.FirstName} {employee.LastName} - {employee.Position}";
                     if (employee.Position == EPosition.Seller)
                     {
-                        mainWindow.btnRemoveItem.IsEnabled = false;
-                        mainWindow.btnAddItem.IsEnabled = false;
+                        //mainWindow.btnRemoveItem.IsEnabled = false;
+                        mainWindow.btnRemoveItem.Visibility = Visibility.Hidden;
+                        mainWindow.btnAddItem.Visibility = Visibility.Hidden;
                     }
                     mainWindow.Show();
                     this.Close();

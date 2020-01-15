@@ -15,21 +15,19 @@ using DLL;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for StoreInventory.xaml
-    /// </summary>
     public partial class StoreInventory : Page
     {
+        List<Item> itemList= new List<Item>();
         public StoreInventory()
         {
-            List<Item> itemList = InitializeItemList();
+            InitializeItemList();
             InitializeComponent();
             listViewItems.ItemsSource = itemList;
         }
 
-        public List<Item> InitializeItemList()
+        public void InitializeItemList()
         {
-            List<Item> itemList = new List<Item>();
+            itemList.Clear();
             foreach (Book book in DB.DbBooks)
             {
                 Item item = new Item();
@@ -51,23 +49,52 @@ namespace GUI
                 item.Description = journal.Description;
                 itemList.Add(item);
             }
-            return itemList;
-        }
-
-        private void RadioBooks_Checked(object sender, RoutedEventArgs e)
-        {
-            listViewItems.ItemsSource = DB.DbBooks;
         }
 
         private void RadioAll_Checked(object sender, RoutedEventArgs e)
         {
-            List<Item> itemList = InitializeItemList();
+            listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            listViewItems.ItemsSource = DB.DbBooks; //bug fix
+            InitializeItemList();
             listViewItems.ItemsSource = itemList;
         }
 
+        private void RadioBooks_Checked(object sender, RoutedEventArgs e)
+        {
+            itemList.Clear();
+            foreach (Book book in DB.DbBooks)
+            {
+                Item item = new Item();
+                item.ItemCode = book.ItemCode;
+                item.Name = book.Name;
+                item.Stock = book.Stock;
+                item.Price = book.Price;
+                item.Description = book.Description;
+                itemList.Add(item);
+            }
+            listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            listViewItems.ItemsSource = itemList;
+
+        }
+
+
         private void RadioJournals_Checked(object sender, RoutedEventArgs e)
         {
-            listViewItems.ItemsSource = DB.DbJournals;
+            itemList.Clear();
+            foreach (Journal journal in DB.DbJournals)
+            {
+                Item item = new Item();
+                item.ItemCode = journal.ItemCode;
+                item.Name = journal.Name;
+                item.Stock = journal.Stock;
+                item.Price = journal.Price;
+                item.Edition = journal.Edition;
+                item.Description = journal.Description;
+                itemList.Add(item);
+            }
+            listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            listViewItems.ItemsSource = itemList;
+
         }
 
         private void TextBoxSerchItem_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,18 +103,21 @@ namespace GUI
             {
                 RadioAll.IsChecked = true;
             }
-            List<Item> serchList = new List<Item>();
+   
             List<Item> showList = new List<Item>();
-            serchList = InitializeItemList();
+            InitializeItemList();
 
-            foreach (Item item in serchList)
+            foreach (Item item in itemList)
             {
                 string name = item.Name.ToLower().Replace(" ", "");
                 if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
                     showList.Add(item);
             }
 
-            listViewItems.ItemsSource = showList;
+            itemList = showList;
+            listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            listViewItems.ItemsSource = DB.DbBooks; //bug fix
+            listViewItems.ItemsSource = itemList;
         }
 
         private void BtnClearSerch_Click(object sender, RoutedEventArgs e)
@@ -96,6 +126,44 @@ namespace GUI
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
+        private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
+        {
+            if (listViewItems.SelectedItems.Count == 0)
+                return;
+         
+            Item item = (Item)listViewItems.SelectedItems[0];
+            foreach (Book book in DB.DbBooks)
+            {
+                if (book.ItemCode == item.ItemCode)
+                {
+                    if (book.Stock > 0)
+                    {
+                        book.Stock--;
+                    }
+                }
+            }
+            foreach (Journal journal in DB.DbJournals)
+            {
+                if (journal.ItemCode == item.ItemCode)
+                {
+                    if (journal.Stock > 0)
+                    {
+                        journal.Stock--;
+                    }
+                }
+            }
+
+            listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            listViewItems.ItemsSource = DB.DbBooks; //bug fix
+            InitializeItemList();
+            listViewItems.ItemsSource = itemList;
+        }
+
+        private void listViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

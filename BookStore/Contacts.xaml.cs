@@ -88,5 +88,10 @@ namespace GUI
 
             listViewItems.ItemsSource = showList;
         }
+
+        private void BtnClearSerch_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxSerchItem.Text = "";
+        }
     }
 }
