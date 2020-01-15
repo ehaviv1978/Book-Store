@@ -80,5 +80,25 @@ namespace GUI
             login.Show();
             this.Close();
         }
+
+        private void TextBoxSerchItem_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (RadioAll != null)
+            {
+                RadioAll.IsChecked = true;
+            }
+            List<Item> serchList = new List<Item>();
+            List<Item> showList = new List<Item>();
+            serchList = InitializeItemList();
+
+            foreach (Item item in serchList)
+            {
+                string name = item.Name.ToLower().Replace(" ", "");
+                if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
+                showList.Add(item);
+            }
+
+            listViewItems.ItemsSource = showList;
+        }
     }
 }
