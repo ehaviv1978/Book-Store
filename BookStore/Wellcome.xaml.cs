@@ -26,9 +26,40 @@ namespace GUI
             InitializeDbBook();
             InitializeDbJournals();
             InitializeDbEmployees();
+            InitializeDbCustomers();
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
         }
 
+        public void InitializeDbCustomers()
+        {
+            DB.DbCustomers.Add(new Customer()
+            {
+                FirstName = "Moshe",
+                LastName = "Huberman",
+                PhoneNumber = 0522154648,
+                Email = "MosheH@gmail.com",
+                Adress = "13 Shoshana st, Jerusalem",
+                Birthdate = new DateTime(1956, 12, 28),
+            });
+            DB.DbCustomers.Add(new Customer()
+            {
+                FirstName = "Gil",
+                LastName = "Liberman",
+                PhoneNumber = 0562153458,
+                Email = "Gliberman@gmail.com",
+                Adress = "84 Hadekel st, Yahud",
+                Birthdate = new DateTime(1999, 1, 8),
+            });
+            DB.DbCustomers.Add(new Customer()
+            {
+                FirstName = "Chack",
+                LastName = "Noris",
+                PhoneNumber = 0506154648,
+                Email = "Chacky@walla.co.il",
+                Adress = "198 Washington st, Los Angeles, US",
+                Birthdate = new DateTime(1956, 12, 28),
+            });
+        }
         public void InitializeDbEmployees()
         {
             DB.DbEmployees.Add(new Employee()
@@ -44,8 +75,8 @@ namespace GUI
             });
             DB.DbEmployees.Add(new Employee()
             {
-                FirstName = "Gal",
-                LastName = "Baz",
+                FirstName = "Van",
+                LastName = "Dam",
                 Password = "1",
                 Position = EPosition.Seller,
                 PhoneNumber = 0527007007,

@@ -5,33 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="Book Store Manager" Height="450" Width="800">
     <Grid>
-        <Label x:Name="lblUser" Content="User:  Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="lblUser" Content="Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,9,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
-        <ListView x:Name="listViewItems" Margin="240,41,10,54">
-            <ListView.View>
-                <GridView x:Name="GridViewItems">
-                    <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
-                    <GridViewColumn Header="Item Name" Width="200" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Edition" Width="40" DisplayMemberBinding="{Binding Edition}" />
-                    <GridViewColumn Header="Stock" Width="40" DisplayMemberBinding="{Binding Stock}" />
-                    <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
 
-                </GridView>
-            </ListView.View>
-
-        </ListView>
-        <Label Content="Store Items" HorizontalAlignment="Left" Margin="240,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" Text="Serch Item" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged"/>
-        <Button x:Name="BtnSerch" Content="Serch" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50"/>
-        <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="335,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
-        <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="483,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
-        <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="414,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
-        <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
-        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold"/>
+        <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnAddCustomer_Click"/>
+        <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnAddItem_Click"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnRemoveItem_Click"/>
+        <Frame x:Name ="Main" Content="Frame" Margin="200,0,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="btnStoreInventory" Content="Inventory" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnStoreInventory_Click"/>
+        <Button x:Name="btnContacts" Content="Contact List" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnContacts_Click"/>
 
     </Grid>
 </Window>

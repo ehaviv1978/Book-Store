@@ -6,7 +6,7 @@ namespace DLL
 {
     public class Transaction
     {
-        public List<int> ItemCodes { get; set; }
+        public List<Item> Items { get; set; }
         public Employee Seller { get; set; }
         public Customer Buyer { get; set; }
         public DateTime Date { get; set; }

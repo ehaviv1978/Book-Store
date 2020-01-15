@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DLL
 {
-    public class Customer :Person
+    public class Customer : Person
     {
         public List<Transaction> BuyHistory;
     }

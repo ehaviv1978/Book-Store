@@ -1,0 +1,32 @@
+﻿<Page x:Class="GUI.Contacts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Contacts">
+
+    <Grid Background="White">
+        <ListView x:Name="listViewItems" Margin="0,41,10,54">
+            <ListView.View>
+                <GridView x:Name="GridViewItems">
+                    <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Header="Phone Number" Width="150" DisplayMemberBinding="{Binding PhoneNumber}"/>
+                    <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Email}" />
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <Label Content="Contacts" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" Text="Enter Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged" />
+        <Button x:Name="BtnClearSerch" Content="Clear" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50" />
+        <RadioButton x:Name="RadioAll" Content="All Contacts" HorizontalAlignment="Left" Margin="75,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked" />
+        <RadioButton x:Name="RadioEmployee" Content="Employee" HorizontalAlignment="Left" Margin="259,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioEmployee_Checked" />
+        <RadioButton x:Name="RadioCustomers" Content="Customers" HorizontalAlignment="Left" Margin="169,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioCustomers_Checked" />
+        <Label Content="Serch:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Normal"/>
+    </Grid>
+</Page>

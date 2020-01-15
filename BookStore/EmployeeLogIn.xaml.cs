@@ -37,7 +37,7 @@ namespace GUI
                 {
                     logIn = true;
                     MainWindow mainWindow = new MainWindow();
-                    mainWindow.lblUser.Content = $"User: {employee.FirstName} {employee.LastName} - {employee.Position}";
+                    mainWindow.lblUser.Content = $"{employee.FirstName} {employee.LastName} - {employee.Position}";
                     if (employee.Position == EPosition.Seller)
                     {
                         mainWindow.btnRemoveItem.IsEnabled = false;
