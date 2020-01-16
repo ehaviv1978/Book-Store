@@ -17,37 +17,59 @@ namespace GUI
 {
     public partial class StoreInventory : Page
     {
+        List<int> allItemCodes = new List<int>();
         List<Item> itemList= new List<Item>();
         public StoreInventory()
         {
-            InitializeItemList();
             InitializeComponent();
+
+            allItemsCodes();
+            InitializeItemList(allItemCodes);
             listViewItems.ItemsSource = itemList;
         }
 
-        public void InitializeItemList()
+        public void allItemsCodes()
         {
-            itemList.Clear();
             foreach (Book book in DB.DbBooks)
             {
-                Item item = new Item();
-                item.ItemCode = book.ItemCode;
-                item.Name = book.Name;
-                item.Stock = book.Stock;
-                item.Price = book.Price;
-                item.Description = book.Description;
-                itemList.Add(item);
+                allItemCodes.Add(book.ItemCode);
             }
             foreach (Journal journal in DB.DbJournals)
             {
-                Item item = new Item();
-                item.ItemCode = journal.ItemCode;
-                item.Name = journal.Name;
-                item.Stock = journal.Stock;
-                item.Price = journal.Price;
-                item.Edition = journal.Edition;
-                item.Description = journal.Description;
-                itemList.Add(item);
+                allItemCodes.Add(journal.ItemCode);
+            }
+        }
+
+        public void InitializeItemList(List<int> allItemCodes)
+        {
+            itemList.Clear();
+            foreach (Book book in DB.DbBooks)
+                if (allItemCodes.Contains(book.ItemCode))
+                {
+                    {
+                        Item item = new Item();
+                        item.ItemCode = book.ItemCode;
+                        item.Name = book.Name;
+                        item.Stock = book.Stock;
+                        item.Price = book.Price;
+                        item.Description = book.Description;
+                        itemList.Add(item);
+                    }
+                }
+           
+            foreach (Journal journal in DB.DbJournals)
+            {
+                if (allItemCodes.Contains(journal.ItemCode))
+                {
+                    Item item = new Item();
+                    item.ItemCode = journal.ItemCode;
+                    item.Name = journal.Name;
+                    item.Stock = journal.Stock;
+                    item.Price = journal.Price;
+                    item.Edition = journal.Edition;
+                    item.Description = journal.Description;
+                    itemList.Add(item);
+                }
             }
         }
 
@@ -55,7 +77,7 @@ namespace GUI
         {
             listViewItems.ItemsSource = DB.DbJournals; //bug fix
             listViewItems.ItemsSource = DB.DbBooks; //bug fix
-            InitializeItemList();
+            InitializeItemList(allItemCodes);
             listViewItems.ItemsSource = itemList;
         }
 
@@ -105,7 +127,7 @@ namespace GUI
             }
    
             List<Item> showList = new List<Item>();
-            InitializeItemList();
+            InitializeItemList(allItemCodes);
 
             foreach (Item item in itemList)
             {
@@ -115,8 +137,8 @@ namespace GUI
             }
 
             itemList = showList;
-            listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            listViewItems.ItemsSource = DB.DbBooks; //bug fix
+            //listViewItems.ItemsSource = DB.DbJournals; //bug fix
+            //listViewItems.ItemsSource = DB.DbBooks; //bug fix
             listViewItems.ItemsSource = itemList;
         }
 
@@ -134,7 +156,13 @@ namespace GUI
         {
             if (listViewItems.SelectedItems.Count == 0)
                 return;
-         
+
+            List<int> someItemCodes = new List<int>();
+            foreach (Item itemRow in listViewItems.Items)
+            {
+                someItemCodes.Add(itemRow.ItemCode);
+            }
+    
             Item item = (Item)listViewItems.SelectedItems[0];
             foreach (Book book in DB.DbBooks)
             {
@@ -159,7 +187,7 @@ namespace GUI
 
             listViewItems.ItemsSource = DB.DbJournals; //bug fix
             listViewItems.ItemsSource = DB.DbBooks; //bug fix
-            InitializeItemList();
+            InitializeItemList(someItemCodes);
             listViewItems.ItemsSource = itemList;
         }
 

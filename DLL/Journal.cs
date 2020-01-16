@@ -8,7 +8,7 @@ namespace DLL
     public class Journal :Item
     {
         public JGenre Genre { get; set; }
-        public DateTime PrintDate { get; set; }
+        public DateTime? PrintDate { get; set; }
 
         public Journal()
         {

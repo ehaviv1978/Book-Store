@@ -184,15 +184,19 @@ namespace GUI
         }
         void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            EmployeeLogIn login = new EmployeeLogIn();
-            login.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            //EmployeeLogIn login = new EmployeeLogIn();
+            //login.Show();
             this.Close();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            EmployeeLogIn login = new EmployeeLogIn();
-            login.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            //EmployeeLogIn login = new EmployeeLogIn();
+            //login.Show();
             this.Close();
         }
     }

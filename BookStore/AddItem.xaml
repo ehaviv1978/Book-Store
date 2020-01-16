@@ -3,13 +3,39 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddItem">
 
-    <Grid Background="White">
-        <Label Content="Add Item" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100"/>
+    <Grid x:Name="___No_Name_" Background="White">
+        <Label Content="Add new Item:" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18" Foreground="#FF2E3EA4"/>
+        <Label x:Name="lblName" Content="Item Name:" HorizontalAlignment="Left" Margin="53,103,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="144,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Button x:Name="btnAdd" Content="Add Item" HorizontalAlignment="Left" Margin="444,327,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="82" Height="33" Click="btnAdd_Click"/>
+        <RadioButton x:Name="radioBook" Content="Add Book" HorizontalAlignment="Left" Margin="56,71,0,0" VerticalAlignment="Top" Checked="radioBook_Checked" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
+        <RadioButton x:Name="radioJournal" Content="Add Journal" HorizontalAlignment="Left" Margin="153,72,0,0" VerticalAlignment="Top" Checked="radioJournal_Checked" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
+        <Label Content="Stock:" HorizontalAlignment="Left" Margin="88,135,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtStock" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <Label Content="Price:" HorizontalAlignment="Left" Margin="90,168,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtPrice" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <Label Content="Genre:" HorizontalAlignment="Left" Margin="83,201,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="ComboGenre" HorizontalAlignment="Left" Margin="144,205,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblPrintDate" Content="Print Date:" HorizontalAlignment="Left" Margin="299,106,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <DatePicker x:Name="datePrintDate" HorizontalAlignment="Left" Margin="388,108,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEdition" Content="Edition:" HorizontalAlignment="Left" Margin="319,139,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtEdition" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="388,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="292,171,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="387,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Height="105"/>
+        <Label x:Name="lblAuthor" Content="Author:" HorizontalAlignment="Left" Margin="73,236,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="lblPages" Content="Pages:" HorizontalAlignment="Left" Margin="82,269,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="lblYearPublished" Content="Year Published:" HorizontalAlignment="Left" Margin="27,304,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="comboPublishedYear" HorizontalAlignment="Left" Margin="144,307,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtPages" MaxLength="5" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="144,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,338,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtISBN" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
 
     </Grid>
 </Page>
