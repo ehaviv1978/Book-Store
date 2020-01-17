@@ -9,29 +9,33 @@
       Title="ItemInfo">
 
     <Grid  Background="White">
-        <Label Content="Item Information:" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18" Foreground="#FF2E3EA4"/>
-        <Label x:Name="lblName" Content="Item Name:" HorizontalAlignment="Left" Margin="53,103,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="144,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label Content="Stock:" HorizontalAlignment="Left" Margin="88,135,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtStock" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
-        <Label Content="Price:" HorizontalAlignment="Left" Margin="90,168,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtPrice" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
-        <Label Content="Genre:" HorizontalAlignment="Left" Margin="83,201,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="ComboGenre" HorizontalAlignment="Left" Margin="144,205,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblPrintDate" Content="Print Date:" HorizontalAlignment="Left" Margin="299,106,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <DatePicker x:Name="datePrintDate" HorizontalAlignment="Left" Margin="388,108,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEdition" Content="Edition:" HorizontalAlignment="Left" Margin="319,139,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtEdition" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="388,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
-        <Label Content="Description:" HorizontalAlignment="Left" Margin="292,171,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="387,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Height="105"/>
-        <Label x:Name="lblAuthor" Content="Author:" HorizontalAlignment="Left" Margin="73,236,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="lblPages" Content="Pages:" HorizontalAlignment="Left" Margin="82,269,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="lblYearPublished" Content="Year Published:" HorizontalAlignment="Left" Margin="27,304,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="comboPublishedYear" HorizontalAlignment="Left" Margin="144,307,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="txtPages" MaxLength="5" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
-        <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="144,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,338,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtISBN" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
+        <Label x:Name="lblHeader" Content="Item Information:" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18" Foreground="#FF2E3EA4"/>
+        <Label x:Name="lblName" Content="Item Name:" HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="144,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="lblStock" Content="Stock:" HorizontalAlignment="Left" Margin="88,140,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtStock" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Margin="90,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtPrice" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <Label x:Name="lblGenre" Content="Genre:" HorizontalAlignment="Left" Margin="327,139,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="ComboGenre" HorizontalAlignment="Left" Margin="529,143,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblPrintDate" Content="Print Date:" HorizontalAlignment="Left" Margin="299,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <DatePicker x:Name="datePrintDate" HorizontalAlignment="Left" Margin="388,77,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEdition" Content="Edition:" HorizontalAlignment="Left" Margin="319,108,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtEdition" MaxLength="3" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="388,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <Label x:Name="lblDescription" Content="Description:" HorizontalAlignment="Left" Margin="293,174,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="387,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Height="166"/>
+        <Label x:Name="lblAuthor" Content="Author:" HorizontalAlignment="Left" Margin="73,207,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="28"/>
+        <Label x:Name="lblPages" Content="Pages:" HorizontalAlignment="Left" Margin="82,240,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="lblYearPublished" Content="Year Published:" HorizontalAlignment="Left" Margin="27,275,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="comboPublishedYear" HorizontalAlignment="Left" Margin="275,276,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtPages" MaxLength="5" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
+        <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="144,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,306,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtISBN" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
+        <Label x:Name="lblCode" Content="Item Code:" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtCode" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <TextBox x:Name="txtYearPublished" HorizontalAlignment="Left" Margin="144,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Margin="386,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontSize="14"/>
 
     </Grid>
 </Page>

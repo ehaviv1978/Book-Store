@@ -80,7 +80,7 @@ namespace GUI
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Item item = (Item)listViewItems.SelectedItems[0];
-            MainWindow.curentItem = item.ItemCode;
+            MainWindow.curentItemCode = item.ItemCode;
             NavigationService.Navigate(new ItemInfo());
         }
 

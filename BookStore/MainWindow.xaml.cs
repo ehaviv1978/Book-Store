@@ -22,7 +22,7 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static int curentItem;
+        public static int curentItemCode;
         public MainWindow()
         {
             

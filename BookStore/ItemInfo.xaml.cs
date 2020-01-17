@@ -25,6 +25,73 @@ namespace GUI
         public ItemInfo()
         {
             InitializeComponent();
+
+            comboPublishedYear.Visibility = Visibility.Hidden;
+            ComboGenre.Visibility = Visibility.Hidden;
+
+            txtCode.IsReadOnly = true;
+            txtName.IsReadOnly = true;
+            txtPrice.IsReadOnly = true;
+            txtDescription.IsReadOnly = true;
+            txtGenre.IsReadOnly = true;
+            txtStock.IsReadOnly = true;
+            txtAuthor.IsReadOnly = true;
+            txtISBN.IsReadOnly = true;
+            txtYearPublished.IsReadOnly = true;
+            txtPages.IsReadOnly = true;
+            txtEdition.IsReadOnly = true;
+            datePrintDate.IsEnabled = false;
+
+            foreach (Book book in DB.DbBooks)
+            {
+                if (book.ItemCode== MainWindow.curentItemCode)
+                {
+                    lblHeader.Content = "Book Information:";
+                    txtCode.Text = book.ItemCode.ToString();
+                    txtName.Text = book.Name;
+                    txtPrice.Text = book.Price.ToString();
+                    txtDescription.Text = book.Description;
+                    txtGenre.Text = book.Genre.ToString();
+                    txtStock.Text = book.Stock.ToString();
+                    txtAuthor.Text = book.Author;
+                    txtISBN.Text = book.ISBN.ToString();
+                    txtYearPublished.Text = book.YearPublished.ToString();
+                    txtPages.Text = book.Pages.ToString();
+
+                    txtEdition.Visibility = Visibility.Hidden;
+                    datePrintDate.Visibility = Visibility.Hidden;
+
+                    lblEdition.Visibility = Visibility.Hidden;
+                    lblPrintDate.Visibility = Visibility.Hidden;
+                  
+                }
+            }
+            foreach (Journal journal in DB.DbJournals)
+            {
+                if (journal.ItemCode == MainWindow.curentItemCode)
+                {
+                    lblHeader.Content = "Journal Information:";
+                    txtCode.Text = journal.ItemCode.ToString();
+                    txtName.Text = journal.Name;
+                    txtPrice.Text = journal.Price.ToString();
+                    txtDescription.Text = journal.Description;
+                    txtGenre.Text = journal.Genre.ToString();
+                    txtStock.Text = journal.Stock.ToString();
+                    txtEdition.Text = journal.Edition.ToString();
+                    datePrintDate.Text = journal.PrintDate.ToString();
+
+                    txtAuthor.Visibility = Visibility.Hidden;
+                    txtISBN.Visibility = Visibility.Hidden;
+                    txtYearPublished.Visibility = Visibility.Hidden;
+                    txtPages.Visibility = Visibility.Hidden;
+
+                    lblAuthor.Visibility = Visibility.Hidden;
+                    lblISBN.Visibility = Visibility.Hidden;
+                    lblYearPublished.Visibility = Visibility.Hidden;
+                    lblPages.Visibility = Visibility.Hidden;
+                }
+            }
+
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
