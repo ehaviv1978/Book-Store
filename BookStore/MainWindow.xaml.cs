@@ -22,9 +22,10 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        public static int curentItem;
         public MainWindow()
         {
+            
             InitializeComponent();
            // Page Inventory = new StoreInventory();
             Main.Content = new StoreInventory();

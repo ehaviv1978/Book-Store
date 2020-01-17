@@ -9,7 +9,7 @@
       Title="StoreInventory">
 
     <Grid Background="White">
-        <ListView x:Name="listViewItems" Margin="0,41,10,54" SelectionChanged="listViewItems_SelectionChanged">
+        <ListView x:Name="listViewItems" Margin="0,41,10,54" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.Resources>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Triggers>
@@ -36,7 +36,7 @@
                 <GridView x:Name="GridViewItems">
                     <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
                     <GridViewColumn Header="Item Name" Width="200" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Edition" Width="40" DisplayMemberBinding="{Binding Edition}" />
+                    <GridViewColumn Header="Edition" Width="50" DisplayMemberBinding="{Binding Edition}" />
                     <GridViewColumn Header="Stock" Width="40" DisplayMemberBinding="{Binding Stock}" />
                     <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
                     <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
@@ -45,7 +45,7 @@
         </ListView>
 
         <Label Content="Store Items" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" Text="Enter Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged"/>
+        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged"/>
         <Button x:Name="BtnClearSerch" Content="Clear" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50" Click="BtnClearSerch_Click"/>
         <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="87,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
         <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="221,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>

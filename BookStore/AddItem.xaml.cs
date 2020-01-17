@@ -61,40 +61,38 @@ namespace GUI
         {
             ComboGenre.ItemsSource = Enum.GetValues(typeof(DLL.BGenre));
 
-            txtAuthor.IsEnabled = true;
-            txtISBN.IsEnabled = true;
-            txtPages.IsEnabled = true;
-            comboPublishedYear.IsEnabled = true;
-            txtEdition.IsEnabled = false;
-            datePrintDate.IsEnabled = false;
+            txtAuthor.Visibility = Visibility.Visible;
+            txtISBN.Visibility = Visibility.Visible;
+            txtPages.Visibility = Visibility.Visible;
+            comboPublishedYear.Visibility = Visibility.Visible;
+            txtEdition.Visibility = Visibility.Hidden;
+            datePrintDate.Visibility = Visibility.Hidden;
 
-            lblAuthor.IsEnabled = true;
-            lblISBN.IsEnabled = true;
-            lblPages.IsEnabled = true;
-            lblYearPublished.IsEnabled = true;
-            lblEdition.IsEnabled = false;
-            lblPrintDate.IsEnabled = false;
-
-
+            lblAuthor.Visibility = Visibility.Visible;
+            lblISBN.Visibility = Visibility.Visible;
+            lblPages.Visibility = Visibility.Visible;
+            lblYearPublished.Visibility = Visibility.Visible;
+            lblEdition.Visibility = Visibility.Hidden;
+            lblPrintDate.Visibility = Visibility.Hidden;
         }
 
         private void radioJournal_Checked(object sender, RoutedEventArgs e)
         {
             ComboGenre.ItemsSource= Enum.GetValues(typeof(DLL.JGenre));
 
-            txtAuthor.IsEnabled = false;
-            txtISBN.IsEnabled = false;
-            txtPages.IsEnabled = false;
-            comboPublishedYear.IsEnabled = false;
-            txtEdition.IsEnabled = true;
-            datePrintDate.IsEnabled = true;
+            txtAuthor.Visibility = Visibility.Hidden;
+            txtISBN.Visibility = Visibility.Hidden;
+            txtPages.Visibility = Visibility.Hidden;
+            comboPublishedYear.Visibility = Visibility.Hidden;
+            txtEdition.Visibility = Visibility.Visible;
+            datePrintDate.Visibility = Visibility.Visible;
 
-            lblAuthor.IsEnabled = false;
-            lblISBN.IsEnabled = false;
-            lblPages.IsEnabled = false;
-            lblYearPublished.IsEnabled = false;
-            lblEdition.IsEnabled = true;
-            lblPrintDate.IsEnabled = true;
+            lblAuthor.Visibility = Visibility.Hidden;
+            lblISBN.Visibility = Visibility.Hidden;
+            lblPages.Visibility = Visibility.Hidden;
+            lblYearPublished.Visibility = Visibility.Hidden;
+            lblEdition.Visibility = Visibility.Visible;
+            lblPrintDate.Visibility = Visibility.Visible;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

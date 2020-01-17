@@ -12,134 +12,64 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Server;
 using DLL;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace GUI
 {
     public partial class StoreInventory : Page
     {
-        List<int> allItemCodes = new List<int>();
-        List<Item> itemList= new List<Item>();
+        List<Item> allItems = DB.DbBooks.Cast<Item>().Concat(DB.DbJournals.Cast<Item>()).ToList();
+        List<Item> shownItems = new List<Item>();
+
         public StoreInventory()
         {
             InitializeComponent();
-
-            allItemsCodes();
-            InitializeItemList(allItemCodes);
-            listViewItems.ItemsSource = itemList;
         }
 
-        public void allItemsCodes()
-        {
-            foreach (Book book in DB.DbBooks)
-            {
-                allItemCodes.Add(book.ItemCode);
-            }
-            foreach (Journal journal in DB.DbJournals)
-            {
-                allItemCodes.Add(journal.ItemCode);
-            }
-        }
-
-        public void InitializeItemList(List<int> allItemCodes)
-        {
-            itemList.Clear();
-            foreach (Book book in DB.DbBooks)
-                if (allItemCodes.Contains(book.ItemCode))
-                {
-                    {
-                        Item item = new Item();
-                        item.ItemCode = book.ItemCode;
-                        item.Name = book.Name;
-                        item.Stock = book.Stock;
-                        item.Price = book.Price;
-                        item.Description = book.Description;
-                        itemList.Add(item);
-                    }
-                }
-           
-            foreach (Journal journal in DB.DbJournals)
-            {
-                if (allItemCodes.Contains(journal.ItemCode))
-                {
-                    Item item = new Item();
-                    item.ItemCode = journal.ItemCode;
-                    item.Name = journal.Name;
-                    item.Stock = journal.Stock;
-                    item.Price = journal.Price;
-                    item.Edition = journal.Edition;
-                    item.Description = journal.Description;
-                    itemList.Add(item);
-                }
-            }
-        }
 
         private void RadioAll_Checked(object sender, RoutedEventArgs e)
         {
-            listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            listViewItems.ItemsSource = DB.DbBooks; //bug fix
-            InitializeItemList(allItemCodes);
-            listViewItems.ItemsSource = itemList;
+            Serch(allItems);
         }
 
         private void RadioBooks_Checked(object sender, RoutedEventArgs e)
         {
-            itemList.Clear();
-            foreach (Book book in DB.DbBooks)
-            {
-                Item item = new Item();
-                item.ItemCode = book.ItemCode;
-                item.Name = book.Name;
-                item.Stock = book.Stock;
-                item.Price = book.Price;
-                item.Description = book.Description;
-                itemList.Add(item);
-            }
-            listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            listViewItems.ItemsSource = itemList;
-
+            Serch(DB.DbBooks.Cast<Item>().ToList());
         }
-
 
         private void RadioJournals_Checked(object sender, RoutedEventArgs e)
         {
-            itemList.Clear();
-            foreach (Journal journal in DB.DbJournals)
-            {
-                Item item = new Item();
-                item.ItemCode = journal.ItemCode;
-                item.Name = journal.Name;
-                item.Stock = journal.Stock;
-                item.Price = journal.Price;
-                item.Edition = journal.Edition;
-                item.Description = journal.Description;
-                itemList.Add(item);
-            }
-            listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            listViewItems.ItemsSource = itemList;
-
+            Serch(DB.DbJournals.Cast<Item>().ToList());
         }
 
         private void TextBoxSerchItem_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (RadioAll != null)
+            if (RadioAll.IsChecked.Value == true)
             {
-                RadioAll.IsChecked = true;
+                Serch(allItems);
             }
-   
-            List<Item> showList = new List<Item>();
-            InitializeItemList(allItemCodes);
+            else if (RadioBooks.IsChecked == true)
+            {
+                Serch(DB.DbBooks.Cast<Item>().ToList());
+            }
+            else
+            {
+                Serch(DB.DbJournals.Cast<Item>().ToList());
+            }
+        }
 
-            foreach (Item item in itemList)
+        private void Serch(List<Item> Items)
+        {
+            shownItems.Clear();
+            foreach (Item item in Items)
             {
                 string name = item.Name.ToLower().Replace(" ", "");
                 if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
-                    showList.Add(item);
+                    shownItems.Add(item);
             }
-
-            itemList = showList;
-            //listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            //listViewItems.ItemsSource = DB.DbBooks; //bug fix
-            listViewItems.ItemsSource = itemList;
+            listViewItems.ItemsSource = shownItems;
+            listViewItems.Items.Refresh();
         }
 
         private void BtnClearSerch_Click(object sender, RoutedEventArgs e)
@@ -147,9 +77,11 @@ namespace GUI
             TextBoxSerchItem.Text = "";
         }
 
-        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Item item = (Item)listViewItems.SelectedItems[0];
+            MainWindow.curentItem = item.ItemCode;
+            NavigationService.Navigate(new ItemInfo());
         }
 
         private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
@@ -184,16 +116,7 @@ namespace GUI
                     }
                 }
             }
-
-            listViewItems.ItemsSource = DB.DbJournals; //bug fix
-            listViewItems.ItemsSource = DB.DbBooks; //bug fix
-            InitializeItemList(someItemCodes);
-            listViewItems.ItemsSource = itemList;
-        }
-
-        private void listViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            listViewItems.Items.Refresh();
         }
     }
 }

@@ -22,7 +22,7 @@
 
         </ListView>
         <Label Content="Contacts" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" Text="Enter Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged" />
+        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged" />
         <Button x:Name="BtnClearSerch" Content="Clear" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50" Click="BtnClearSerch_Click" />
         <RadioButton x:Name="RadioAll" Content="All Contacts" HorizontalAlignment="Left" Margin="75,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked" />
         <RadioButton x:Name="RadioEmployee" Content="Employee" HorizontalAlignment="Left" Margin="259,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioEmployee_Checked" />

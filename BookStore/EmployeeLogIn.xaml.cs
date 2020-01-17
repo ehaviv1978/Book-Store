@@ -41,7 +41,6 @@ namespace GUI
                     if (employee.Position == EPosition.Seller)
                     {
                         //mainWindow.btnRemoveItem.IsEnabled = false;
-                        mainWindow.btnRemoveItem.Visibility = Visibility.Hidden;
                         mainWindow.btnAddItem.Visibility = Visibility.Hidden;
                     }
                     mainWindow.Show();
