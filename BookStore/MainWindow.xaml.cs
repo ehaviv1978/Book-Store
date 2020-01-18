@@ -22,7 +22,9 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static int curentItemCode;
+        public static int currentItemCode;
+        public static int currentPersonID;
+        public static string user = "manager";
         public MainWindow()
         {
             

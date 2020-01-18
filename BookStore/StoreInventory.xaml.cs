@@ -80,7 +80,7 @@ namespace GUI
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Item item = (Item)listViewItems.SelectedItems[0];
-            MainWindow.curentItemCode = item.ItemCode;
+            MainWindow.currentItemCode = item.ItemCode;
             NavigationService.Navigate(new ItemInfo());
         }
 
@@ -89,12 +89,6 @@ namespace GUI
             if (listViewItems.SelectedItems.Count == 0)
                 return;
 
-            List<int> someItemCodes = new List<int>();
-            foreach (Item itemRow in listViewItems.Items)
-            {
-                someItemCodes.Add(itemRow.ItemCode);
-            }
-    
             Item item = (Item)listViewItems.SelectedItems[0];
             foreach (Book book in DB.DbBooks)
             {
@@ -103,6 +97,7 @@ namespace GUI
                     if (book.Stock > 0)
                     {
                         book.Stock--;
+                        MessageBox.Show("Item Add to order");
                     }
                 }
             }
@@ -113,6 +108,7 @@ namespace GUI
                     if (journal.Stock > 0)
                     {
                         journal.Stock--;
+                        MessageBox.Show("Item Add to order");
                     }
                 }
             }

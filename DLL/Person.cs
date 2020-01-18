@@ -4,8 +4,9 @@ using System.Text;
 
 namespace DLL
 {
-    public class Person
+    public interface Person
     {
+        public int PersonStoreID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthdate { get; set; }

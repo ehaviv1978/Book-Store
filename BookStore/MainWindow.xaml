@@ -13,7 +13,7 @@
 
         <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnAddCustomer_Click"/>
         <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnAddItem_Click"/>
-        <Frame x:Name ="Main" Content="Frame" Margin="200,0,0,0" Navigated="Frame_Navigated" /><!--NavigationUIVisibility="Hidden"-->
+        <Frame x:Name ="Main" Content="Frame" Margin="200,0,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
         <Button x:Name="btnStoreInventory" Content="Inventory" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnStoreInventory_Click"/>
         <Button x:Name="btnContacts" Content="Contact List" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnContacts_Click"/>
 

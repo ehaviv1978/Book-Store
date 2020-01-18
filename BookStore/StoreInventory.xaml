@@ -52,8 +52,5 @@
         <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="158,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
         <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Normal"/>
         <Button x:Name="btnAddToOrder" Content="Add to Order" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="30" Width="130" FontWeight="Bold" FontSize="13" Click="btnAddToOrder_Click"/>
-        <Button x:Name="btnRemoveFromOrder" Content="Remove from Order" HorizontalAlignment="Right" Margin="0,0,150,10" VerticalAlignment="Bottom" Height="30" Width="138" FontWeight="Bold" FontSize="13"/>
-        <Button x:Name="btnEditItem" Content="Edit Item" HorizontalAlignment="Right" Margin="0,0,320,10" VerticalAlignment="Bottom" Height="30" Width="138" FontWeight="Bold" FontSize="13" Foreground="#FFD31919"/>
-        <Label x:Name="lblTest" Content="Label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="282"/>
     </Grid>
 </Page>

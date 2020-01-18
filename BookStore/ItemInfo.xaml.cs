@@ -22,9 +22,16 @@ namespace GUI
     /// </summary>
     public partial class ItemInfo : Page
     {
+        Item curentItem;
         public ItemInfo()
         {
             InitializeComponent();
+
+            if (MainWindow.user == "seller")
+            {
+                btnDeleteItem.Visibility = Visibility.Hidden;
+                btnEditItem.Visibility = Visibility.Hidden;
+            }
 
             comboPublishedYear.Visibility = Visibility.Hidden;
             ComboGenre.Visibility = Visibility.Hidden;
@@ -44,8 +51,10 @@ namespace GUI
 
             foreach (Book book in DB.DbBooks)
             {
-                if (book.ItemCode== MainWindow.curentItemCode)
+                if (book.ItemCode== MainWindow.currentItemCode)
                 {
+                    curentItem = book;
+
                     lblHeader.Content = "Book Information:";
                     txtCode.Text = book.ItemCode.ToString();
                     txtName.Text = book.Name;
@@ -68,8 +77,10 @@ namespace GUI
             }
             foreach (Journal journal in DB.DbJournals)
             {
-                if (journal.ItemCode == MainWindow.curentItemCode)
+                if (journal.ItemCode == MainWindow.currentItemCode)
                 {
+                    curentItem = journal;
+
                     lblHeader.Content = "Journal Information:";
                     txtCode.Text = journal.ItemCode.ToString();
                     txtName.Text = journal.Name;
@@ -117,6 +128,41 @@ namespace GUI
             }
             txtPrice.Text = strTemp;
 
+        }
+
+        private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
+        {
+            curentItem.Stock--;
+            txtStock.Text = curentItem.Stock.ToString();
+            MessageBox.Show("Item Add to order");
+        }
+
+        private void btnDeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                foreach (Book book in DB.DbBooks)
+                {
+                    if (book.ItemCode == curentItem.ItemCode)
+                    {
+                        DB.DbBooks.Remove(book);
+                        MessageBox.Show("Item Deleted");
+                        NavigationService.Navigate(new StoreInventory());
+                        break;
+                    }
+                }
+                foreach (Journal journal in DB.DbJournals)
+                {
+                    if (journal.ItemCode == curentItem.ItemCode)
+                    {
+                        DB.DbJournals.Remove(journal);
+                        MessageBox.Show("Item Deleted");
+                        NavigationService.Navigate(new StoreInventory());
+                        break;
+                    }
+                }
+            }
         }
     }
 }

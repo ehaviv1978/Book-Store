@@ -9,9 +9,10 @@
       Title="Contacts">
 
     <Grid Background="White">
-        <ListView x:Name="listViewItems" Margin="0,41,10,54">
+        <ListView x:Name="listViewItems" Margin="0,41,10,54" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.View>
                 <GridView x:Name="GridViewItems">
+                    <GridViewColumn Header="Store ID" Width="50" DisplayMemberBinding="{Binding PersonStoreID}" />
                     <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastName}" />
                     <GridViewColumn Header="Phone Number" Width="150" DisplayMemberBinding="{Binding PhoneNumber}"/>
