@@ -18,13 +18,14 @@
         <Label Content="Email:" HorizontalAlignment="Left" Margin="95,281,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Margin="153,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="153,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="153,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="153,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
         <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="153,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="153,181,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnEdit" Content="Edit Info" HorizontalAlignment="Left" Margin="195,326,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="78" Height="26" Click="btnAdd_Click"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
+        <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="154,184,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnEdit" Content="Edit Info" HorizontalAlignment="Left" Margin="322,324,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="78" Height="26" Click="btnEdit_Click"/>
         <Label Content="Store ID:" HorizontalAlignment="Left" Margin="77,81,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtStoreID" HorizontalAlignment="Left" Margin="153,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="213,324,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnSave_Click"/>
 
     </Grid>
 </Page>

@@ -86,5 +86,10 @@ namespace GUI
             MainWindow.currentPersonID = person.PersonStoreID;
             NavigationService.Navigate(new PersonInfo());
         }
+
+        private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddCustomer());
+        }
     }
 }

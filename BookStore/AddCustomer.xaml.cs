@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Text.RegularExpressions;
+
 
 namespace GUI
 {
@@ -25,20 +27,30 @@ namespace GUI
             InitializeComponent();
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (txtFirstName.Text != "" && txtLastName.Text != "" && txtPhoneNumber != null)
+            if (txtFirstName.Text != "" && txtLastName.Text != "" && txtPhoneNumber.Text != "")
             {
                 Customer newCustomer = new Customer();
                 newCustomer.FirstName = txtFirstName.Text;
                 newCustomer.LastName = txtLastName.Text;
                 newCustomer.Birthdate = datePickerBirthDate.SelectedDate;
                 newCustomer.Adress = txtAddress.Text;
-                newCustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                if (txtPhoneNumber.Text != "")
+                {
+                    newCustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                }
                 newCustomer.Email = txtEmail.Text;
 
                 DB.DbCustomers.Add(newCustomer);
                 MessageBox.Show("New Customer Add");
+                NavigationService.Navigate(new Contacts());
             }
             else
             {

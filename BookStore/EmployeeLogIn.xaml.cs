@@ -41,12 +41,12 @@ namespace GUI
                     if (employee.Position == EPosition.Seller)
                     {
                         MainWindow.user = "seller";
-                        mainWindow.btnAddItem.Visibility = Visibility.Hidden;
                     }
                     else
                     {
                         MainWindow.user = "manager";
                     }
+                    mainWindow.Main.Navigate(new StoreInventory());
                     mainWindow.Show();
                     this.Close();
                 }

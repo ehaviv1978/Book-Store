@@ -26,6 +26,8 @@ namespace GUI
         public ItemInfo()
         {
             InitializeComponent();
+            datePrintDate.Focusable = false;
+            datePrintDate.IsHitTestVisible = false;
 
             if (MainWindow.user == "seller")
             {
@@ -47,7 +49,6 @@ namespace GUI
             txtYearPublished.IsReadOnly = true;
             txtPages.IsReadOnly = true;
             txtEdition.IsReadOnly = true;
-            datePrintDate.IsEnabled = false;
 
             foreach (Book book in DB.DbBooks)
             {

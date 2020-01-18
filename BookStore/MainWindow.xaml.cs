@@ -44,12 +44,7 @@ namespace GUI
         {
 
         }
-
-        private void btnAddItem_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new AddItem();
-        }
-
+        
         private void btnStoreInventory_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new StoreInventory();
@@ -58,11 +53,6 @@ namespace GUI
         private void btnRemoveItem_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new RemoveItem();
-        }
-
-        private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new AddCustomer();
         }
 
         private void btnContacts_Click(object sender, RoutedEventArgs e)

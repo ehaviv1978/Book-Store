@@ -19,7 +19,7 @@
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Margin="153,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="153,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="153,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="153,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtPhoneNumber" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="153,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="153,142,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="226,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26" Click="btnAdd_Click"/>

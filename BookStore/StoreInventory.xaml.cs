@@ -25,6 +25,15 @@ namespace GUI
         public StoreInventory()
         {
             InitializeComponent();
+            if (MainWindow.user == "manager")
+            {
+                btnAddItem.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnAddItem.Visibility = Visibility.Hidden;
+
+            }
         }
 
 
@@ -113,6 +122,11 @@ namespace GUI
                 }
             }
             listViewItems.Items.Refresh();
+        }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddItem());
         }
     }
 }
