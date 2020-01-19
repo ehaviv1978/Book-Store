@@ -20,5 +20,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Transaction History" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Page>

@@ -28,6 +28,10 @@ namespace GUI
         {
             InitializeComponent();
             listViewItems.ItemsSource = allPersons;
+            if (MainWindow.user == "seller")
+            {
+                btnAddWorker.Visibility = Visibility.Hidden;
+            }
         }
    
 
@@ -90,6 +94,11 @@ namespace GUI
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddCustomer());
+        }
+
+        private void btnAddWorker_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

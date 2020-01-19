@@ -58,5 +58,15 @@ namespace GUI
             }
 
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddCustomer());
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Contacts());
+        }
     }
 }

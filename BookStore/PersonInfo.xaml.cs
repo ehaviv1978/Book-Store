@@ -24,6 +24,7 @@ namespace GUI
         public PersonInfo()
         {
             InitializeComponent();
+            btnCancel.Visibility = Visibility.Hidden;
             isEmployee = false;
             comboEmployeePosition.ItemsSource = Enum.GetValues(typeof(DLL.EPosition));
             comboEmployeePosition.Visibility = Visibility.Hidden;
@@ -96,6 +97,7 @@ namespace GUI
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            btnCancel.Visibility = Visibility.Visible;
             if (isEmployee)
             { 
                 comboEmployeePosition.Visibility = Visibility.Visible;
@@ -161,6 +163,12 @@ namespace GUI
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PersonInfo());
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Contacts());
+
         }
     }
 }

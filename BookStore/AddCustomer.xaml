@@ -23,5 +23,7 @@
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="153,142,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="226,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26" Click="btnAdd_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="169,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26" Click="btnCancel_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="111,287,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="47" Height="26" Click="btnBack_Click" />
     </Grid>
 </Page>

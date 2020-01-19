@@ -150,5 +150,10 @@ namespace GUI
             }
             MessageBox.Show("New Item Add to Inventory");
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreInventory());
+        }
     }
 }

@@ -27,6 +27,8 @@ namespace GUI
             if (DB.DBCurentOrder.Count == 0)
             {
                 btnConfirmOrder.IsEnabled = false;
+                btnCancel.IsEnabled = false;
+                btnRemoveFromOrder.IsEnabled = false;
             }
             showPrice();
         }
@@ -69,6 +71,9 @@ namespace GUI
                 MessageBox.Show("Order Canceled");
                 listViewItems.Items.Refresh();
                 lblTotalPrice.Content = "Total: 0.00$";
+                btnConfirmOrder.IsEnabled = false;
+                btnCancel.IsEnabled = false;
+                btnRemoveFromOrder.IsEnabled = false;
             }
         }
 
@@ -104,6 +109,8 @@ namespace GUI
             if (DB.DBCurentOrder.Count == 0)
             {
                 btnConfirmOrder.IsEnabled = false;
+                btnCancel.IsEnabled = false;
+                btnRemoveFromOrder.IsEnabled = false;
             }
             listViewItems.Items.Refresh();
             showPrice();

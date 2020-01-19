@@ -13,7 +13,7 @@
         <Label Content="Add new Item:" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18" Foreground="#FF2E3EA4"/>
         <Label x:Name="lblName" Content="Item Name:" HorizontalAlignment="Left" Margin="53,103,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="144,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Button x:Name="btnAdd" Content="Add Item" HorizontalAlignment="Left" Margin="444,327,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="82" Height="33" Click="btnAdd_Click"/>
+        <Button x:Name="btnAdd" Content="Add Item" HorizontalAlignment="Left" Margin="456,353,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="82" Height="33" Click="btnAdd_Click"/>
         <RadioButton x:Name="radioBook" Content="Add Book" HorizontalAlignment="Left" Margin="56,71,0,0" VerticalAlignment="Top" Checked="radioBook_Checked" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
         <RadioButton x:Name="radioJournal" Content="Add Journal" HorizontalAlignment="Left" Margin="153,72,0,0" VerticalAlignment="Top" Checked="radioJournal_Checked" FontSize="14" FontWeight="Normal" FontStyle="Italic"/>
         <Label Content="Stock:" HorizontalAlignment="Left" Margin="88,135,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
@@ -36,6 +36,7 @@
         <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="144,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,338,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtISBN" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="360,353,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="82" Height="33" Click="btnBack_Click"/>
 
     </Grid>
 </Page>

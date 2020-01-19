@@ -24,5 +24,6 @@
         <Label x:Name="lblTotalPrice" Content="Total: 0.00$" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="108" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnRemoveFromOrder" Content="Remove Item from Order" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,246,10" Height="29" Width="178" FontWeight="Bold" FontSize="14" Click="btnRemoveFromOrder_Click"/>
         <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Height="29" Width="118" FontWeight="Bold" FontSize="14" Click="btnConfirmOrder_Click"/>
+        <Label Content="Curent Order" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Page>

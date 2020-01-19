@@ -30,6 +30,7 @@
         <TextBox x:Name="txtEmployeePosition" HorizontalAlignment="Left" Margin="444,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <ComboBox x:Name="comboEmployeePosition" HorizontalAlignment="Left" Margin="444,148,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboEmployeePosition_SelectionChanged"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="276,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnCancel_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="167,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnBack_Click" />
 
     </Grid>
 </Page>
