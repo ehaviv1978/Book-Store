@@ -1,0 +1,24 @@
+﻿<Page x:Class="GUI.CurrentOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CurrentOrder">
+
+    <Grid Background="White">
+        <ListView x:Name="listViewItems" Margin="0,41,10,54"> <!--MouseDoubleClick="ListView_MouseDoubleClick"-->
+            <ListView.View>
+                <GridView x:Name="GridViewItems">
+                    <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
+                    <GridViewColumn Header="Item Name" Width="200" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Edition" Width="50" DisplayMemberBinding="{Binding Edition}" />
+                    <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

@@ -17,7 +17,7 @@
         <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Margin="90,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtPrice" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
         <Label x:Name="lblGenre" Content="Genre:" HorizontalAlignment="Left" Margin="327,139,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="ComboGenre" HorizontalAlignment="Left" Margin="529,143,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComboGenre" HorizontalAlignment="Left" Margin="529,143,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboGenre_SelectionChanged"/>
         <Label x:Name="lblPrintDate" Content="Print Date:" HorizontalAlignment="Left" Margin="299,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <DatePicker x:Name="datePrintDate" HorizontalAlignment="Left" Margin="388,77,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEdition" Content="Edition:" HorizontalAlignment="Left" Margin="319,108,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
@@ -27,7 +27,7 @@
         <Label x:Name="lblAuthor" Content="Author:" HorizontalAlignment="Left" Margin="73,207,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Height="28"/>
         <Label x:Name="lblPages" Content="Pages:" HorizontalAlignment="Left" Margin="82,240,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="lblYearPublished" Content="Year Published:" HorizontalAlignment="Left" Margin="27,275,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="comboPublishedYear" HorizontalAlignment="Left" Margin="275,276,0,0" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="comboPublishedYear" HorizontalAlignment="Left" Margin="275,276,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="comboPublishedYear_SelectionChanged"/>
         <TextBox x:Name="txtPages" MaxLength="5" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="14"/>
         <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="144,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,306,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
@@ -37,8 +37,10 @@
         <TextBox x:Name="txtYearPublished" HorizontalAlignment="Left" Margin="144,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Margin="386,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontSize="14"/>
         <Button x:Name="btnAddToOrder" Content="Add to Order" HorizontalAlignment="Left" Margin="434,358,0,0" VerticalAlignment="Top" Height="32" Width="103" FontWeight="Bold" FontSize="14" Click="btnAddToOrder_Click"/>
-        <Button x:Name="btnEditItem" Content="Edit Item" HorizontalAlignment="Left" Margin="319,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="btnEditItem" Content="Edit Item" HorizontalAlignment="Left" Margin="319,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnEditItem_Click"/>
         <Button x:Name="btnDeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="203,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnDeleteItem_Click"/>
+        <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="86,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnSave_Click" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="86,397,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnCancel_Click"/>
 
     </Grid>
 </Page>

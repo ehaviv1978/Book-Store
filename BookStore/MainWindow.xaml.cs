@@ -60,5 +60,10 @@ namespace GUI
 
             Main.Content = new Contacts();
         }
+
+        private void btnCurentOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new CurrentOrder();
+        }
     }
 }

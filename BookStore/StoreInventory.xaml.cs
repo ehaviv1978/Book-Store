@@ -106,7 +106,12 @@ namespace GUI
                     if (book.Stock > 0)
                     {
                         book.Stock--;
+                        DB.DBCurentOrder.Add(book);
                         MessageBox.Show("Item Add to order");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not in Stock!!");
                     }
                 }
             }
@@ -117,7 +122,12 @@ namespace GUI
                     if (journal.Stock > 0)
                     {
                         journal.Stock--;
+                        DB.DBCurentOrder.Add(journal);
                         MessageBox.Show("Item Add to order");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not in Stock!!");
                     }
                 }
             }

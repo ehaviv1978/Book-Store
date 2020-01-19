@@ -23,14 +23,31 @@ namespace GUI
         public PersonInfo()
         {
             InitializeComponent();
-
+            comboEmployeePosition.ItemsSource = Enum.GetValues(typeof(DLL.EPosition));
+            comboEmployeePosition.Visibility = Visibility.Hidden;
             btnSave.Visibility = Visibility.Hidden;
 
             if (MainWindow.user == "seller")
             {
                 btnEdit.Visibility = Visibility.Hidden;
             }
+            
+            foreach (Employee employee in DB.DbEmployees)
+            {
+                if (employee.PersonStoreID == MainWindow.currentPersonID)
+                {
+                    lblHeader.Content = "Employee Information:";
+                    txtEmployeePosition.Visibility = Visibility.Visible;
+                    lblEmployeePosition.Visibility = Visibility.Visible;
+                    break;
+                }
+                lblHeader.Content = "Coustomer Information:";
+                txtEmployeePosition.Visibility = Visibility.Hidden;
+                lblEmployeePosition.Visibility = Visibility.Hidden;
 
+            }
+
+            txtEmployeePosition.IsReadOnly = true;
             txtStoreID.IsReadOnly = true;
             txtAddress.IsReadOnly = true;
             txtEmail.IsReadOnly = true;
@@ -57,6 +74,7 @@ namespace GUI
             {
                 if (employee.PersonStoreID == MainWindow.currentPersonID)
                 {
+                    txtEmployeePosition.Text = employee.Position.ToString();
                     txtFirstName.Text = employee.FirstName;
                     txtLastName.Text = employee.LastName;
                     txtAddress.Text = employee.Adress;
@@ -69,6 +87,7 @@ namespace GUI
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            comboEmployeePosition.Visibility = Visibility.Visible;
             txtAddress.IsReadOnly = false;
             txtEmail.IsReadOnly = false;
             txtFirstName.IsReadOnly = false;
@@ -82,7 +101,7 @@ namespace GUI
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Chane Confirmation", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Change Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 txtStoreID.Text = MainWindow.currentPersonID.ToString();
@@ -102,6 +121,7 @@ namespace GUI
                 {
                     if (employee.PersonStoreID == MainWindow.currentPersonID)
                     {
+                        employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
                         employee.FirstName = txtFirstName.Text;
                         employee.LastName = txtLastName.Text;
                         employee.Adress = txtAddress.Text;
@@ -113,6 +133,17 @@ namespace GUI
                 MessageBox.Show("Changes Saved");
                 NavigationService.Navigate(new Contacts());
             }
+        }
+
+        private void changeEmployeePosition()
+        {
+            txtEmployeePosition.Text = comboEmployeePosition.Text;
+        }
+
+        private void comboEmployeePosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboEmployeePosition.Text = comboEmployeePosition.SelectedItem.ToString();
+            txtEmployeePosition.Text = comboEmployeePosition.Text;
         }
     }
 }

@@ -9,7 +9,7 @@
       Title="PersonInfo">
 
     <Grid Background="White">
-        <Label Content="Person Information" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
+        <Label x:Name="lblHeader" Content="Person Information" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="62,111,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label Content="Birth Date:" HorizontalAlignment="Left" Margin="63,179,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
@@ -26,6 +26,9 @@
         <Label Content="Store ID:" HorizontalAlignment="Left" Margin="77,81,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtStoreID" HorizontalAlignment="Left" Margin="153,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="213,324,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnSave_Click"/>
+        <Label x:Name="lblEmployeePosition" Content="Employee Position:" HorizontalAlignment="Left" Margin="289,84,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtEmployeePosition" HorizontalAlignment="Left" Margin="426,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <ComboBox x:Name="comboEmployeePosition" HorizontalAlignment="Left" Margin="426,126,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboEmployeePosition_SelectionChanged"/>
 
     </Grid>
 </Page>

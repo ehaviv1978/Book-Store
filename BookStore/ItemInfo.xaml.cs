@@ -22,12 +22,20 @@ namespace GUI
     /// </summary>
     public partial class ItemInfo : Page
     {
+        string itemType;
         Item curentItem;
         public ItemInfo()
         {
             InitializeComponent();
+            btnSave.Visibility = Visibility.Hidden;
+            btnCancel.Visibility = Visibility.Hidden;
             datePrintDate.Focusable = false;
             datePrintDate.IsHitTestVisible = false;
+            ComboGenre.ItemsSource = Enum.GetValues(typeof(DLL.BGenre));
+            for (int i = 0; i <= DateTime.Now.Year; i++)
+            {
+                comboPublishedYear.Items.Add(i);
+            }
 
             if (MainWindow.user == "seller")
             {
@@ -55,7 +63,7 @@ namespace GUI
                 if (book.ItemCode== MainWindow.currentItemCode)
                 {
                     curentItem = book;
-
+                    itemType = "book";
                     lblHeader.Content = "Book Information:";
                     txtCode.Text = book.ItemCode.ToString();
                     txtName.Text = book.Name;
@@ -73,15 +81,21 @@ namespace GUI
 
                     lblEdition.Visibility = Visibility.Hidden;
                     lblPrintDate.Visibility = Visibility.Hidden;
-                  
+                    break;
                 }
+                itemJournal();
             }
+
+        }
+
+        private void itemJournal()
+        {
             foreach (Journal journal in DB.DbJournals)
             {
                 if (journal.ItemCode == MainWindow.currentItemCode)
                 {
                     curentItem = journal;
-
+                    itemType = "journal";
                     lblHeader.Content = "Journal Information:";
                     txtCode.Text = journal.ItemCode.ToString();
                     txtName.Text = journal.Name;
@@ -101,9 +115,9 @@ namespace GUI
                     lblISBN.Visibility = Visibility.Hidden;
                     lblYearPublished.Visibility = Visibility.Hidden;
                     lblPages.Visibility = Visibility.Hidden;
+                    break;
                 }
             }
-
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -133,9 +147,17 @@ namespace GUI
 
         private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
         {
-            curentItem.Stock--;
-            txtStock.Text = curentItem.Stock.ToString();
-            MessageBox.Show("Item Add to order");
+            if (curentItem.Stock > 0)
+            {
+                curentItem.Stock--;
+                DB.DBCurentOrder.Add(curentItem);
+                txtStock.Text = curentItem.Stock.ToString();
+                MessageBox.Show("Item Add to order");
+            }
+            else
+            {
+                MessageBox.Show("No Item in stock!!");
+            }
         }
 
         private void btnDeleteItem_Click(object sender, RoutedEventArgs e)
@@ -163,6 +185,110 @@ namespace GUI
                         break;
                     }
                 }
+            }
+        }
+
+        private void btnEditItem_Click(object sender, RoutedEventArgs e)
+        {
+            btnCancel.Visibility = Visibility.Visible;
+            btnDeleteItem.Visibility = Visibility.Hidden;
+            btnEditItem.Visibility = Visibility.Hidden;
+            btnAddToOrder.Visibility = Visibility.Hidden;
+            btnSave.Visibility = Visibility.Visible;
+            //txtCode.IsReadOnly = false;
+            txtName.IsReadOnly = false;
+            txtPrice.IsReadOnly = false;
+            txtDescription.IsReadOnly = false;
+            //txtGenre.IsReadOnly = false;
+            txtStock.IsReadOnly = false;
+            txtAuthor.IsReadOnly = false;
+            txtISBN.IsReadOnly = false;
+            //txtYearPublished.IsReadOnly = false;
+            txtPages.IsReadOnly = false;
+            txtEdition.IsReadOnly = false;
+            datePrintDate.Focusable = true;
+            datePrintDate.IsHitTestVisible = true;
+
+            if (itemType == "book")
+            {
+               
+                comboPublishedYear.Visibility = Visibility.Visible;
+                ComboGenre.Visibility = Visibility.Visible;
+                comboPublishedYear.Text = txtYearPublished.Text;
+            }
+            else
+            {
+                ComboGenre.ItemsSource = Enum.GetValues(typeof(DLL.JGenre));
+                ComboGenre.Visibility = Visibility.Visible;
+            }
+            ComboGenre.Text = txtGenre.Text;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Change Confirmation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                if (itemType == "book")
+                {
+                    foreach (Book book in DB.DbBooks)
+                    {
+                        if (book.ItemCode == MainWindow.currentItemCode)
+                        {
+                            book.Description = txtDescription.Text;
+                            book.Name = txtName.Text;
+                            book.Price = Convert.ToDouble(txtPrice.Text);
+                            book.Stock = Convert.ToInt32(txtStock.Text);
+                            book.Description = txtDescription.Text;
+                            book.Author = txtAuthor.Text;
+                            book.ISBN = Convert.ToInt32(txtISBN.Text);
+                            book.Pages = Convert.ToInt32(txtPages.Text);
+                            book.YearPublished = Convert.ToInt32(txtYearPublished.Text);
+                            book.Genre = (BGenre)ComboGenre.SelectedItem;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Journal journal in DB.DbJournals)
+                    {
+                        if (journal.ItemCode == MainWindow.currentItemCode)
+                        {
+                            journal.Description = txtDescription.Text;
+                            journal.Name = txtName.Text;
+                            journal.Price = Convert.ToInt32(txtPrice.Text);
+                            journal.Stock = Convert.ToInt32(txtStock.Text);
+                            journal.Description = txtDescription.Text;
+                            journal.Edition = Convert.ToInt32(txtEdition.Text);
+                            journal.PrintDate = datePrintDate.SelectedDate;
+                            break;
+                        }
+                    }
+                }
+                MessageBox.Show("Changes Saved");
+                NavigationService.Navigate(new StoreInventory());
+            }
+        }
+
+        private void ComboGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboGenre.Text = ComboGenre.SelectedItem.ToString();
+            txtGenre.Text = ComboGenre.Text;
+        }
+
+        private void comboPublishedYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboPublishedYear.Text = comboPublishedYear.SelectedItem.ToString();
+            txtYearPublished.Text = comboPublishedYear.Text;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Cancel Confirmation", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                NavigationService.Navigate(new ItemInfo());
             }
         }
     }
