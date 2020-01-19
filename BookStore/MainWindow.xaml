@@ -8,13 +8,14 @@
         WindowState="Maximized"
         Title="Book Store Manager" Height="450" Width="800">
     <Grid>
-        <Label x:Name="lblUser" Content="Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
-        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
+        <Label x:Name="lblUser" Content="Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="#FF7F1717"/>
+        <Button x:Name="btnUser" Content="Change User" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnUser_Click"/>
         <Frame x:Name ="Main" Content="Frame" Margin="200,0,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
-        <Button x:Name="btnStoreInventory" Content="Inventory" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnStoreInventory_Click"/>
-        <Button x:Name="btnContacts" Content="Contact List" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnContacts_Click"/>
-        <Button x:Name="btnCurentOrder" Content="Curent Order" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnCurentOrder_Click"/>
-        <Button x:Name="btnTransactionHistory" Content="Transaction History" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Width="125" Height="27" FontWeight="Bold" Click="btnTransactionHistory_Click" />
+        <Button x:Name="btnStoreInventory" Content="Inventory" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnStoreInventory_Click"/>
+        <Button x:Name="btnContacts" Content="Contact List" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnContacts_Click"/>
+        <Button x:Name="btnCurentOrder" Content="Curent Order" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnCurentOrder_Click"/>
+        <Button x:Name="btnTransactionHistory" Content="Transaction History" HorizontalAlignment="Left" Margin="10,287,0,0" VerticalAlignment="Top" Width="125" Height="27" FontWeight="Bold" Click="btnTransactionHistory_Click" />
+        <Button x:Name="btnChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="112" Height="27" FontWeight="Bold" Click="btnChangePassword_Click"/>
 
     </Grid>
 </Window>

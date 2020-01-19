@@ -292,5 +292,10 @@ namespace GUI
                 NavigationService.Navigate(new ItemInfo());
             }
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreInventory());
+        }
     }
 }

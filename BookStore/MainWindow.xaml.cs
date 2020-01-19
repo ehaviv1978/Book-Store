@@ -22,15 +22,15 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Employee currentEmployee = new Employee();
         public static int currentItemCode;
         public static int currentPersonID;
         public static string user = "manager";
         public static Transaction curentTransaction = new Transaction();
+        
         public MainWindow()
         {
-            
             InitializeComponent();
-           // Page Inventory = new StoreInventory();
             Main.Content = new StoreInventory();
         }
 
@@ -70,6 +70,11 @@ namespace GUI
         private void btnTransactionHistory_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new TransactionHistory();
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ChangePassword();
         }
     }
 }

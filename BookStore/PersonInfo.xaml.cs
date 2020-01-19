@@ -33,6 +33,7 @@ namespace GUI
             if (MainWindow.user == "seller")
             {
                 btnEdit.Visibility = Visibility.Hidden;
+                btnRemovePerson.Visibility = Visibility.Hidden;
             }
             
             foreach (Employee employee in DB.DbEmployees)
@@ -169,6 +170,38 @@ namespace GUI
         {
             NavigationService.Navigate(new Contacts());
 
+        }
+
+        private void btnRemovePerson_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Person", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                if (isEmployee)
+                {
+                    foreach (Employee employee in DB.DbEmployees)
+                    {
+                        if (employee.PersonStoreID.ToString() == txtStoreID.Text)
+                        {
+                            DB.DbEmployees.Remove(employee);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Customer customer in DB.DbCustomers)
+                    {
+                        if (customer.PersonStoreID.ToString() == txtStoreID.Text)
+                        {
+                            DB.DbCustomers.Remove(customer);
+                            break;
+                        }
+                    }
+                }
+                MessageBox.Show("Person Removed from data base");
+                NavigationService.Navigate(new Contacts());
+            }
         }
     }
 }

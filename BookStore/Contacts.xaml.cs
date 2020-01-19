@@ -98,7 +98,7 @@ namespace GUI
 
         private void btnAddWorker_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new NewWorker());
         }
     }
 }

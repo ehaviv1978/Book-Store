@@ -31,6 +31,7 @@
         <ComboBox x:Name="comboEmployeePosition" HorizontalAlignment="Left" Margin="444,148,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboEmployeePosition_SelectionChanged"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="276,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnCancel_Click"/>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="167,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnBack_Click" />
+        <Button x:Name="btnRemovePerson" Content="Remove Person" HorizontalAlignment="Left" Margin="48,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="103" Height="26" Click="btnRemovePerson_Click" />
 
     </Grid>
 </Page>

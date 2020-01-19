@@ -41,6 +41,7 @@
         <Button x:Name="btnDeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="203,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnDeleteItem_Click"/>
         <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="86,358,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnSave_Click" />
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="86,397,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnCancel_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="435,397,0,0" VerticalAlignment="Top" Height="32" Width="102" FontWeight="Bold" FontSize="14" Click="btnBack_Click"/>
 
     </Grid>
 </Page>

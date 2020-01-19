@@ -50,7 +50,7 @@
         <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="87,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
         <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="221,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
         <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="158,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>
-        <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Normal"/>
+        <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnAddToOrder" Content="Add to Order" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="30" Width="130" FontWeight="Bold" FontSize="13" Click="btnAddToOrder_Click"/>
         <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Right" Margin="0,0,155,10" VerticalAlignment="Bottom" Width="86" Height="30" FontWeight="Bold" Click="btnAddItem_Click" Visibility="Hidden"/>
     </Grid>

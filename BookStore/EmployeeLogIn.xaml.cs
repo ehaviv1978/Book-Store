@@ -35,6 +35,7 @@ namespace GUI
                 name = name.ToLower();
                 if (logString == name && TextBoxPasswordLog.Password == employee.Password)
                 {
+                    MainWindow.currentEmployee = employee;
                     logIn = true;
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.lblUser.Content = $"{employee.FirstName} {employee.LastName} - {employee.Position}";

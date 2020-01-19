@@ -28,7 +28,7 @@
         <RadioButton x:Name="RadioAll" Content="All Contacts" HorizontalAlignment="Left" Margin="75,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked" />
         <RadioButton x:Name="RadioEmployee" Content="Employee" HorizontalAlignment="Left" Margin="259,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioEmployee_Checked" />
         <RadioButton x:Name="RadioCustomers" Content="Customers" HorizontalAlignment="Left" Margin="169,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioCustomers_Checked" />
-        <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Normal"/>
+        <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Right" Margin="0,0,12,10" VerticalAlignment="Bottom" Width="86" Height="27" FontWeight="Bold" Click="btnAddCustomer_Click"/>
         <Button x:Name="btnAddWorker" Content="Add Worker" HorizontalAlignment="Right" Margin="0,0,110,10" VerticalAlignment="Bottom" Width="86" Height="27" FontWeight="Bold" Click="btnAddWorker_Click"/>
     </Grid>
