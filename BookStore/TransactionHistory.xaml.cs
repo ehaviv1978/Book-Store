@@ -26,5 +26,12 @@ namespace GUI
             listViewItems.ItemsSource = DB.DbTransactions;
 
         }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Transaction transaction= (Transaction)listViewItems.SelectedItems[0];
+            MainWindow.curentTransaction = transaction;
+            NavigationService.Navigate(new TransactionInfo());
+        }
     }
 }

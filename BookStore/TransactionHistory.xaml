@@ -9,7 +9,7 @@
       Title="TransactionHistory">
 
     <Grid Background="White">
-        <ListView x:Name="listViewItems" Margin="0,41,10,54">
+        <ListView x:Name="listViewItems" Margin="0,41,10,54" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.View>
                 <GridView x:Name="GridViewItems">
                     <GridViewColumn Header="Seller" Width="150" DisplayMemberBinding="{Binding Seller.FirstName}" />

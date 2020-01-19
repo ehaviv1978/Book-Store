@@ -101,11 +101,16 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Order Confirm", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                List<Item> order = new List<Item>();
+                foreach (Item item in DB.DBCurentOrder)
+                {
+                    order.Add(item);
+                }
                 Transaction sell = new Transaction();
                 sell.Buyer = buyer;
                 sell.Date = DateTime.Now;
                 sell.Seller = seller;
-                sell.Items = DB.DBCurentOrder;
+                sell.Items = order;
                 sell.Price = totalPrice;
 
                 DB.DbTransactions.Add(sell);

@@ -25,6 +25,7 @@ namespace GUI
         public static int currentItemCode;
         public static int currentPersonID;
         public static string user = "manager";
+        public static Transaction curentTransaction = new Transaction();
         public MainWindow()
         {
             
