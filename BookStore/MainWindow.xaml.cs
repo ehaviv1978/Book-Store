@@ -65,5 +65,10 @@ namespace GUI
         {
             Main.Content = new CurrentOrder();
         }
+
+        private void btnTransactionHistory_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new TransactionHistory();
+        }
     }
 }

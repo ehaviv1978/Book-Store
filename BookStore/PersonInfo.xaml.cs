@@ -20,9 +20,11 @@ namespace GUI
     /// </summary>
     public partial class PersonInfo : Page
     {
+        bool isEmployee;
         public PersonInfo()
         {
             InitializeComponent();
+            isEmployee = false;
             comboEmployeePosition.ItemsSource = Enum.GetValues(typeof(DLL.EPosition));
             comboEmployeePosition.Visibility = Visibility.Hidden;
             btnSave.Visibility = Visibility.Hidden;
@@ -36,15 +38,22 @@ namespace GUI
             {
                 if (employee.PersonStoreID == MainWindow.currentPersonID)
                 {
-                    lblHeader.Content = "Employee Information:";
-                    txtEmployeePosition.Visibility = Visibility.Visible;
-                    lblEmployeePosition.Visibility = Visibility.Visible;
+                    isEmployee = true;
                     break;
-                }
+                }            
+            }
+
+            if (isEmployee)
+            {
+                lblHeader.Content = "Employee Information:";
+                txtEmployeePosition.Visibility = Visibility.Visible;
+                lblEmployeePosition.Visibility = Visibility.Visible;
+            }
+            else
+            {
                 lblHeader.Content = "Coustomer Information:";
                 txtEmployeePosition.Visibility = Visibility.Hidden;
                 lblEmployeePosition.Visibility = Visibility.Hidden;
-
             }
 
             txtEmployeePosition.IsReadOnly = true;
@@ -87,7 +96,10 @@ namespace GUI
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            comboEmployeePosition.Visibility = Visibility.Visible;
+            if (isEmployee)
+            { 
+                comboEmployeePosition.Visibility = Visibility.Visible;
+            }
             txtAddress.IsReadOnly = false;
             txtEmail.IsReadOnly = false;
             txtFirstName.IsReadOnly = false;
@@ -144,6 +156,11 @@ namespace GUI
         {
             comboEmployeePosition.Text = comboEmployeePosition.SelectedItem.ToString();
             txtEmployeePosition.Text = comboEmployeePosition.Text;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PersonInfo());
         }
     }
 }

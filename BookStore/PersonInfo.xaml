@@ -9,26 +9,27 @@
       Title="PersonInfo">
 
     <Grid Background="White">
-        <Label x:Name="lblHeader" Content="Person Information" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="16"/>
-        <Label Content="First Name:" HorizontalAlignment="Left" Margin="62,111,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Birth Date:" HorizontalAlignment="Left" Margin="63,179,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Address:" HorizontalAlignment="Left" Margin="78,251,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Phone Number:" HorizontalAlignment="Left" Margin="30,216,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="95,281,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Margin="153,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="153,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="153,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="153,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="153,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
-        <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="154,184,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnEdit" Content="Edit Info" HorizontalAlignment="Left" Margin="322,324,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="78" Height="26" Click="btnEdit_Click"/>
-        <Label Content="Store ID:" HorizontalAlignment="Left" Margin="77,81,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtStoreID" HorizontalAlignment="Left" Margin="153,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="213,324,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnSave_Click"/>
-        <Label x:Name="lblEmployeePosition" Content="Employee Position:" HorizontalAlignment="Left" Margin="289,84,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtEmployeePosition" HorizontalAlignment="Left" Margin="426,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-        <ComboBox x:Name="comboEmployeePosition" HorizontalAlignment="Left" Margin="426,126,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboEmployeePosition_SelectionChanged"/>
+        <Label x:Name="lblHeader" Content="Person Information" HorizontalAlignment="Left" Margin="52,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontSize="18" Foreground="#FF253C7C"/>
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="80,133,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="81,167,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Birth Date:" HorizontalAlignment="Left" Margin="81,201,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="96,273,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Phone Number:" HorizontalAlignment="Left" Margin="48,238,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="113,303,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Margin="171,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="171,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Margin="171,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="171,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="171,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontSize="14"/>
+        <DatePicker x:Name="datePickerBirthDate" HorizontalAlignment="Left" Margin="172,206,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnEdit" Content="Edit Info" HorizontalAlignment="Left" Margin="492,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="78" Height="26" Click="btnEdit_Click"/>
+        <Label Content="Store ID:" HorizontalAlignment="Left" Margin="95,103,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtStoreID" HorizontalAlignment="Left" Margin="171,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <Button x:Name="btnSave" Content="Save Changes" HorizontalAlignment="Left" Margin="384,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnSave_Click"/>
+        <Label x:Name="lblEmployeePosition" Content="Employee Position:" HorizontalAlignment="Left" Margin="307,106,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtEmployeePosition" HorizontalAlignment="Left" Margin="444,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <ComboBox x:Name="comboEmployeePosition" HorizontalAlignment="Left" Margin="444,148,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboEmployeePosition_SelectionChanged"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="276,381,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Width="94" Height="26" Click="btnCancel_Click"/>
 
     </Grid>
 </Page>
