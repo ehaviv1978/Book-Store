@@ -88,9 +88,12 @@ namespace GUI
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Item item = (Item)listViewItems.SelectedItems[0];
-            MainWindow.currentItemCode = item.ItemCode;
-            NavigationService.Navigate(new ItemInfo());
+            if (listViewItems.SelectedItems.Count >0)
+            {
+                Item item = (Item)listViewItems.SelectedItems[0];
+                MainWindow.currentItemCode = item.ItemCode;
+                NavigationService.Navigate(new ItemInfo());
+            }
         }
 
         private void btnAddToOrder_Click(object sender, RoutedEventArgs e)

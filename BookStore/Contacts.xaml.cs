@@ -86,9 +86,12 @@ namespace GUI
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Person person = (Person)listViewItems.SelectedItems[0];
-            MainWindow.currentPersonID = person.PersonStoreID;
-            NavigationService.Navigate(new PersonInfo());
+            if (listViewItems.SelectedItems.Count > 0)
+            {
+                Person person = (Person)listViewItems.SelectedItems[0];
+                MainWindow.currentPersonID = person.PersonStoreID;
+                NavigationService.Navigate(new PersonInfo());
+            }
         }
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
