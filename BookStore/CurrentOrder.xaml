@@ -16,6 +16,8 @@
                     <GridViewColumn Header="Item Name" Width="200" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Edition" Width="50" DisplayMemberBinding="{Binding Edition}" />
                     <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Discount" Width="60" DisplayMemberBinding="{Binding Discount}" />
+                    <GridViewColumn Header="Final Price" Width="60" DisplayMemberBinding="{Binding FinalPrice}" />
                     <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
                 </GridView>
             </ListView.View>
@@ -25,5 +27,6 @@
         <Button x:Name="btnRemoveFromOrder" Content="Remove Item from Order" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,246,10" Height="29" Width="178" FontWeight="Bold" FontSize="14" Click="btnRemoveFromOrder_Click"/>
         <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Height="29" Width="118" FontWeight="Bold" FontSize="14" Click="btnConfirmOrder_Click"/>
         <Label Content="Curent Order" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="29" Width="92" FontWeight="Bold" FontSize="14" Click="btnBack_Click"/>
     </Grid>
 </Page>

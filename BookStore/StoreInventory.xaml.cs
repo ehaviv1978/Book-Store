@@ -25,6 +25,8 @@ namespace GUI
         public StoreInventory()
         {
             InitializeComponent();
+            CalculateDiscounts();
+            listViewItems.Items.Refresh();
             if (MainWindow.user == "manager")
             {
                 btnAddItem.Visibility = Visibility.Visible;
@@ -32,10 +34,73 @@ namespace GUI
             else
             {
                 btnAddItem.Visibility = Visibility.Hidden;
-
             }
         }
 
+        private void CalculateDiscounts()
+        {
+            foreach (Book book in DB.DbBooks)
+            {
+                foreach (Discount discount in DB.DBDiscounts)
+                {
+                    if (discount.Percent > book.Discount)
+                    {
+                        if (discount.Property == DiscountField.BGenre)
+                        {
+                            if (discount.PropertyValue == book.Genre.ToString())
+                            {
+                                book.Discount = discount.Percent;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = Math.Round(book.FinalPrice, 2);
+                            }
+                        }
+                        else if (discount.Property == DiscountField.BAuthor)
+                        {
+                            if (discount.PropertyValue == book.Author)
+                            {
+                                book.Discount = discount.Percent;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = Math.Round(book.FinalPrice, 2);
+                            }
+                        }
+                        else if (discount.Property == DiscountField.BYearPublished)
+                        {
+                            if (discount.PropertyValue == book.YearPublished.ToString())
+                            {
+                                book.Discount = discount.Percent;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = Math.Round(book.FinalPrice, 2);
+                            }
+                        }
+                        else
+                        {
+                            book.FinalPrice = book.Price;
+                            break;
+                        }
+                    }
+                        
+                }
+            }
+            foreach (Journal journal in DB.DbJournals)
+            {
+                foreach (Discount discount in DB.DBDiscounts)
+                {
+                    if (discount.Property == DiscountField.JGenre && discount.Percent > journal.Discount)
+                    {
+                        if (discount.PropertyValue == journal.Genre.ToString())
+                        {
+                            journal.Discount = discount.Percent;
+                            journal.FinalPrice = journal.Price * (100 - journal.Discount) / 100;
+                            journal.FinalPrice = Math.Round(journal.FinalPrice, 2);
+                        }
+                        else
+                        {
+                            journal.FinalPrice = journal.Price;
+                        }
+                    }
+                }
+            }
+        }
 
         private void RadioAll_Checked(object sender, RoutedEventArgs e)
         {

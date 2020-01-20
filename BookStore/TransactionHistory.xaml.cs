@@ -29,9 +29,17 @@ namespace GUI
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Transaction transaction= (Transaction)listViewItems.SelectedItems[0];
-            MainWindow.curentTransaction = transaction;
-            NavigationService.Navigate(new TransactionInfo());
+            if (listViewItems.SelectedItems.Count > 0)
+            {
+                Transaction transaction = (Transaction)listViewItems.SelectedItems[0];
+                MainWindow.curentTransaction = transaction;
+                NavigationService.Navigate(new TransactionInfo());
+            }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreInventory());
         }
     }
 }

@@ -39,6 +39,7 @@
                     <GridViewColumn Header="Edition" Width="50" DisplayMemberBinding="{Binding Edition}" />
                     <GridViewColumn Header="Stock" Width="40" DisplayMemberBinding="{Binding Stock}" />
                     <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Discoun %" Width="70" DisplayMemberBinding="{Binding Discount}" />
                     <GridViewColumn Header="Description" Width="700" DisplayMemberBinding="{Binding Description}" />
                 </GridView>
             </ListView.View>

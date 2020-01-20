@@ -21,5 +21,6 @@
             </ListView.View>
         </ListView>
         <Label Content="Transaction History" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="29" Width="92" FontWeight="Bold" FontSize="14" Click="btnBack_Click"/>
     </Grid>
 </Page>

@@ -76,5 +76,11 @@ namespace GUI
         {
             Main.Content = new ChangePassword();
         }
+
+        private void btnDiscountList_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new DiscountList();
+
+        }
     }
 }

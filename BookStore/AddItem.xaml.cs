@@ -108,6 +108,7 @@ namespace GUI
                 book.Name = txtName.Text;
                 book.Stock = Convert.ToInt32(txtStock.Text);
                 book.Price = Convert.ToDouble(txtPrice.Text);
+                book.Price = Math.Round(book.Price, 2);
                 if (ComboGenre.SelectedItem != null)
                 {
                     book.Genre = (DLL.BGenre)ComboGenre.SelectedItem;
@@ -123,7 +124,7 @@ namespace GUI
                 }
                 if (txtISBN.Text != "")
                 {
-                    book.ISBN = Convert.ToInt32(txtISBN.Text);
+                    book.ISBN = Convert.ToInt64(txtISBN.Text);
                 }
                 book.Description = txtDescription.Text;
 
@@ -135,6 +136,7 @@ namespace GUI
                 journal.Name = txtName.Text;
                 journal.Stock = Convert.ToInt32(txtStock.Text);
                 journal.Price = Convert.ToDouble(txtPrice.Text);
+                journal.Price = Math.Round(journal.Price, 2);
                 if (ComboGenre.SelectedItem != null)
                 {
                     journal.Genre = (DLL.JGenre)ComboGenre.SelectedItem;
@@ -149,6 +151,7 @@ namespace GUI
                 DB.DbJournals.Add(journal);
             }
             MessageBox.Show("New Item Add to Inventory");
+            NavigationService.Navigate(new StoreInventory());
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

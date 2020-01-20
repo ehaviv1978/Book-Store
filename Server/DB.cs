@@ -7,6 +7,7 @@ namespace Server
 {
     public static class DB
     {
+        public static List<Discount> DBDiscounts = new List<Discount>();
         public static List<Item> DBCurentOrder = new List<Item>();
         public static List<Book> DbBooks = new List<Book>();
         public static List<Journal> DbJournals = new List<Journal>();

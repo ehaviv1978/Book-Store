@@ -31,5 +31,6 @@
         <Label Content="Search:" HorizontalAlignment="Right" Margin="0,10,224,0" VerticalAlignment="Top" RenderTransformOrigin="1.413,0.425" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnAddCustomer" Content="Add Customer" HorizontalAlignment="Right" Margin="0,0,12,10" VerticalAlignment="Bottom" Width="86" Height="27" FontWeight="Bold" Click="btnAddCustomer_Click"/>
         <Button x:Name="btnAddWorker" Content="Add Worker" HorizontalAlignment="Right" Margin="0,0,110,10" VerticalAlignment="Bottom" Width="86" Height="27" FontWeight="Bold" Click="btnAddWorker_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="29" Width="92" FontWeight="Bold" FontSize="14" Click="btnBack_Click"/>
     </Grid>
 </Page>

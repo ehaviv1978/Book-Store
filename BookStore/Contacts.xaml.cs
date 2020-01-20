@@ -103,5 +103,10 @@ namespace GUI
         {
             NavigationService.Navigate(new NewWorker());
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreInventory());
+        }
     }
 }

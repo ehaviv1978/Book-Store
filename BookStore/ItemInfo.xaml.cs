@@ -46,6 +46,7 @@ namespace GUI
             comboPublishedYear.Visibility = Visibility.Hidden;
             ComboGenre.Visibility = Visibility.Hidden;
 
+            txtDiscount.IsReadOnly = true;
             txtCode.IsReadOnly = true;
             txtName.IsReadOnly = true;
             txtPrice.IsReadOnly = true;
@@ -62,6 +63,7 @@ namespace GUI
             {
                 if (book.ItemCode== MainWindow.currentItemCode)
                 {
+                    txtDiscount.Text = book.Discount.ToString();
                     curentItem = book;
                     itemType = "book";
                     lblHeader.Content = "Book Information:";
@@ -94,6 +96,7 @@ namespace GUI
             {
                 if (journal.ItemCode == MainWindow.currentItemCode)
                 {
+                    txtDiscount.Text = journal.Discount.ToString();
                     curentItem = journal;
                     itemType = "journal";
                     lblHeader.Content = "Journal Information:";

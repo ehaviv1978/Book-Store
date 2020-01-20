@@ -32,7 +32,7 @@ namespace GUI
             btnConfirm.IsEnabled = false;
             foreach (Item item in DB.DBCurentOrder)
             {
-                totalPrice += item.Price;
+                totalPrice += item.FinalPrice;
             }
             foreach (Employee employee in DB.DbEmployees)
             {

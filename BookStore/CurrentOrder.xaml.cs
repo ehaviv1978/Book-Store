@@ -38,9 +38,9 @@ namespace GUI
             double totalPrice = 0;
             foreach (Item item in DB.DBCurentOrder)
             {
-                totalPrice += item.Price;
+                totalPrice += item.FinalPrice;
             }
-            lblTotalPrice.Content = $"Total: {totalPrice}₪";
+            lblTotalPrice.Content = $"Total: {String.Format("{0:0.00}", totalPrice)}₪";
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -120,6 +120,11 @@ namespace GUI
         {
             NavigationService.Navigate(new OrderConfirm());
 
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreInventory());
         }
     }
 }

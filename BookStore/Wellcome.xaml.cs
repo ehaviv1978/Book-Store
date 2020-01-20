@@ -28,6 +28,7 @@ namespace GUI
             InitializeDbEmployees();
             InitializeDbCustomers();
             InitializeDbTransactions();
+            InitializeDBDiscounts();
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
         }
 
@@ -214,6 +215,23 @@ namespace GUI
             });
         }
 
+        public void InitializeDBDiscounts()
+        {
+            DB.DBDiscounts.Add(new Discount()
+            {
+                Property = DiscountField.BGenre,
+                PropertyValue = BGenre.SciFi.ToString(),
+                Percent = 20
+            }) ;
+            DB.DBDiscounts.Add(new Discount()
+            {
+                Property = DiscountField.JGenre,
+                PropertyValue = JGenre.Fusion.ToString(),
+                Percent = 50
+            });
+
+        }
+
         void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             nextWindow();
@@ -226,10 +244,10 @@ namespace GUI
 
         private void nextWindow()
         {
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Show();
-            EmployeeLogIn login = new EmployeeLogIn();
-            login.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            //EmployeeLogIn login = new EmployeeLogIn();
+            //login.Show();
             this.Close();
         }
     }
