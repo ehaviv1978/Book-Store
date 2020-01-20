@@ -32,7 +32,7 @@ namespace GUI
             string items = "";
             foreach (Item item in MainWindow.curentTransaction.Items)
             {
-                items += item.Name + "\n";
+                items += item.ItemCode + "  -  " + item.Name + "\n";
             }
 
             txtTotal.Text = MainWindow.curentTransaction.Price.ToString();

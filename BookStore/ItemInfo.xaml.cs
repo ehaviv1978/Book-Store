@@ -153,7 +153,6 @@ namespace GUI
                 DB.DBCurentOrder.Add(curentItem);
                 txtStock.Text = curentItem.Stock.ToString();
                 MessageBox.Show("Item Add to order");
-                NavigationService.Navigate(new StoreInventory());
             }
             else
             {

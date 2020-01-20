@@ -27,6 +27,7 @@ namespace GUI
             InitializeDbJournals();
             InitializeDbEmployees();
             InitializeDbCustomers();
+            InitializeDbTransactions();
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
         }
 
@@ -82,7 +83,18 @@ namespace GUI
                 PhoneNumber = 0527007007,
                 Email = "DinL@gmail.com",
                 Adress = "Bet Shemesh",
-                Birthdate = new DateTime(1998, 1, 1),
+                Birthdate = new DateTime(1968, 1, 1),
+            });
+            DB.DbEmployees.Add(new Employee()
+            {
+                FirstName = "Bruce",
+                LastName = "Lee",
+                Password = "1",
+                Position = EPosition.Seller,
+                PhoneNumber = 0527000001,
+                Email = "BLee@gmail.com",
+                Adress = "Hong Kong, China",
+                Birthdate = new DateTime(1955, 12, 12),
             });
         }
 
@@ -180,23 +192,44 @@ namespace GUI
                 Edition = 87,
                 PrintDate = new DateTime(2020, 2, 1)
             });
-
         }
+
+        public void InitializeDbTransactions()
+        {
+            DB.DbTransactions.Add(new Transaction()
+            {
+                Seller = DB.DbEmployees[1],
+                Buyer = DB.DbCustomers[0],
+                Price = 45.34,
+                Date = new DateTime(2019, 1, 1),
+                Items = new List<Item> { DB.DbBooks[2], DB.DbJournals[3] }
+            });
+            DB.DbTransactions.Add(new Transaction()
+            {
+                Seller = DB.DbEmployees[0],
+                Buyer = DB.DbCustomers[2],
+                Price = 55.20,
+                Date = new DateTime(2018, 1, 1),
+                Items = new List<Item> { DB.DbBooks[1], DB.DbJournals[1], DB.DbBooks[0], DB.DbJournals[0] }
+            });
+        }
+
         void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            //EmployeeLogIn login = new EmployeeLogIn();
-            //login.Show();
-            this.Close();
+            nextWindow();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            //EmployeeLogIn login = new EmployeeLogIn();
-            //login.Show();
+            nextWindow();
+        }
+
+        private void nextWindow()
+        {
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
+            EmployeeLogIn login = new EmployeeLogIn();
+            login.Show();
             this.Close();
         }
     }

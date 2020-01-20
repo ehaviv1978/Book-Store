@@ -19,8 +19,9 @@
         <TextBox x:Name="txtBuyer" HorizontalAlignment="Left" Margin="144,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="27" FontSize="14"/>
         <TextBox x:Name="txtItems" HorizontalAlignment="Left" Margin="144,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" Height="208" FontSize="14"/>
         <TextBox x:Name="txtDate" HorizontalAlignment="Left" Margin="456,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="27" FontSize="14"/>
-        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="456,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="27" FontSize="14"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="456,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="27" FontSize="14" TextAlignment="Right"/>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="538,328,0,0" VerticalAlignment="Top" Height="36" Width="82" FontSize="14" FontWeight="Bold" Click="btnBack_Click"/>
+        <Label Content="₪" HorizontalAlignment="Left" Margin="541,118,0,0" VerticalAlignment="Top" FontSize="17" FontWeight="Bold"/>
 
     </Grid>
 </Page>

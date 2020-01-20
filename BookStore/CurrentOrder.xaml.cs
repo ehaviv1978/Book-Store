@@ -40,7 +40,7 @@ namespace GUI
             {
                 totalPrice += item.Price;
             }
-            lblTotalPrice.Content = $"Total: {totalPrice}$";
+            lblTotalPrice.Content = $"Total: {totalPrice}₪";
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

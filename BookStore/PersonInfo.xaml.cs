@@ -136,6 +136,22 @@ namespace GUI
                 {
                     if (employee.PersonStoreID == MainWindow.currentPersonID)
                     {
+                        if (txtEmployeePosition.Text == "Seller")
+                        {
+                            int counter = 0;
+                            foreach (Employee employee1 in DB.DbEmployees)
+                            {
+                                if (employee1.Position.ToString() == "Manager")
+                                {
+                                    counter++;
+                                }
+                            }
+                            if (counter < 2)
+                            {
+                                MessageBox.Show("Store must have at list one manager");
+                                return;
+                            }
+                        }
                         employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
                         employee.FirstName = txtFirstName.Text;
                         employee.LastName = txtLastName.Text;
