@@ -38,6 +38,7 @@ namespace GUI
         private void comboDiscountBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboDiscountBy.Text = comboDiscountBy.SelectedItem.ToString();
+            comboUseValue.ItemsSource = null;
             switch (comboDiscountBy.Text.ToString())
             {
                 case "BGenre":

@@ -75,7 +75,6 @@ namespace GUI
                         else
                         {
                             book.FinalPrice = book.Price;
-                            break;
                         }
                     }
                         
