@@ -14,7 +14,7 @@
         <Frame x:Name ="Main" Content="Frame" Margin="200,0,0,0" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
         <Button x:Name="btnStoreInventory" Content="Inventory" HorizontalAlignment="Left" Margin="15,153,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnStoreInventory_Click"/>
         <Button x:Name="btnContacts" Content="Contact List" HorizontalAlignment="Left" Margin="15,189,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnContacts_Click"/>
-        <Button x:Name="btnCurentOrder" Content="Curent Order" HorizontalAlignment="Left" Margin="15,261,0,0" VerticalAlignment="Top" Width="86" Height="27" FontWeight="Bold" Click="btnCurentOrder_Click"/>
+        <Button x:Name="btnCurentOrder" Content="Shopping Chart" HorizontalAlignment="Left" Margin="15,261,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Click="btnCurentOrder_Click" Foreground="#FFC61919"/>
         <Button x:Name="btnTransactionHistory" Content="Transaction History" HorizontalAlignment="Left" Margin="15,296,0,0" VerticalAlignment="Top" Width="125" Height="27" FontWeight="Bold" Click="btnTransactionHistory_Click" />
         <Button x:Name="btnChangePassword" Content="Change Password" HorizontalAlignment="Left" Margin="15,86,0,0" VerticalAlignment="Top" Width="112" Height="27" FontWeight="Bold" Click="btnChangePassword_Click"/>
         <Rectangle HorizontalAlignment="Left" Height="190" Margin="5,142,0,0" Stroke="Black" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.5,0.5">

@@ -213,6 +213,14 @@ namespace GUI
                 Date = new DateTime(2018, 1, 1),
                 Items = new List<Item> { DB.DbBooks[1], DB.DbJournals[1], DB.DbBooks[0], DB.DbJournals[0] }
             });
+            DB.DbTransactions.Add(new Transaction()
+            {
+                Seller = DB.DbEmployees[2],
+                Buyer = DB.DbCustomers[1],
+                Price = 60.99,
+                Date = new DateTime(2017, 10, 10),
+                Items = new List<Item> { DB.DbBooks[3], DB.DbJournals[3], DB.DbBooks[0], DB.DbJournals[2] }
+            });
         }
 
         public void InitializeDBDiscounts()
@@ -229,7 +237,6 @@ namespace GUI
                 PropertyValue = JGenre.Fusion.ToString(),
                 Percent = 50
             });
-
         }
 
         void MainWindow_KeyDown(object sender, KeyEventArgs e)
