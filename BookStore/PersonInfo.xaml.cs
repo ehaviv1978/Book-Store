@@ -152,7 +152,10 @@ namespace GUI
                                 return;
                             }
                         }
-                        employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
+                        if (comboEmployeePosition.Text != "")
+                        {
+                            employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
+                        }
                         employee.FirstName = txtFirstName.Text;
                         employee.LastName = txtLastName.Text;
                         employee.Adress = txtAddress.Text;
@@ -161,6 +164,7 @@ namespace GUI
                         employee.Birthdate = datePickerBirthDate.SelectedDate;
                     }
                 }
+                //lblUser.Content = "hello";// $"{employee.FirstName} {employee.LastName} - {employee.Position}";
                 MessageBox.Show("Changes Saved");
                 NavigationService.Navigate(new Contacts());
             }

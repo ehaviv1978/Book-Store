@@ -244,10 +244,10 @@ namespace GUI
 
         private void nextWindow()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            //EmployeeLogIn login = new EmployeeLogIn();
-            //login.Show();
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
+            EmployeeLogIn login = new EmployeeLogIn();
+            login.Show();
             this.Close();
         }
     }
