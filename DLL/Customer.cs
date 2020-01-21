@@ -6,9 +6,8 @@ namespace DLL
 {
     public class Customer : Person
     {
-        public List<Transaction> BuyHistory;
         public static int CodeGenerator = 20000;
-
+        public int TotalSpent { get; set; }
         public int PersonStoreID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

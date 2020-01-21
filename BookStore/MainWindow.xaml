@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         WindowState="Maximized"
+        MinHeight="500" MinWidth="900"
         Title="Book Store Manager" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblUser" Content="Eran Haviv - Manager" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic" Foreground="#FF7F1717"/>

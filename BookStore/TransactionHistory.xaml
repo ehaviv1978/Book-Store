@@ -12,15 +12,23 @@
         <ListView x:Name="listViewItems" Margin="0,41,10,54" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.View>
                 <GridView x:Name="GridViewItems">
-                    <GridViewColumn Header="Seller" Width="150" DisplayMemberBinding="{Binding Seller.FirstName}" />
-                    <GridViewColumn Header="Buyer" Width="150" DisplayMemberBinding="{Binding Buyer.FirstName}" />
-                    <GridViewColumn Header="Buyer Phone Number" Width="150" DisplayMemberBinding="{Binding Buyer.PhoneNumber}" />
-                    <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Header="Seller First Name" Width="110" DisplayMemberBinding="{Binding Seller.FirstName}" />
+                    <GridViewColumn Header="Seller Last Name" Width="110" DisplayMemberBinding="{Binding Seller.LastName}" />
+                    <GridViewColumn  Width="20" DisplayMemberBinding="{Binding s}"/>
+                    <GridViewColumn Header="Buyer First Name" Width="110" DisplayMemberBinding="{Binding Buyer.FirstName}" />
+                    <GridViewColumn Header="Buyer Last Name" Width="110" DisplayMemberBinding="{Binding Buyer.LastName}" />
+                    <GridViewColumn Header="Buyer Phone Number" Width="120" DisplayMemberBinding="{Binding Buyer.PhoneNumber}" />
+                    <GridViewColumn Header="Date" Width="110" DisplayMemberBinding="{Binding Date}" />
                     <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Price}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Transaction History" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Transaction History" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" FontStyle="Italic"/>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="29" Width="92" FontWeight="Bold" FontSize="14" Click="btnBack_Click"/>
+        <Label Content="Search By:" HorizontalAlignment="Right" Margin="0,6,440,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal" FontStyle="Normal"/>
+        <RadioButton x:Name="radioEmployee" Content="Employee:" HorizontalAlignment="Right" Margin="0,14,360,0" VerticalAlignment="Top" FontFamily="Segoe UI" Checked="radioEmployee_Checked"/>
+        <RadioButton x:Name="radioCoustomer" Content="Coustomer:" HorizontalAlignment="Right" Margin="0,15,139,0" VerticalAlignment="Top" FontFamily="Segoe UI" Checked="radioCoustomer_Checked"/>
+        <ComboBox x:Name="comboEmployee" HorizontalAlignment="Right" Margin="0,12,225,0" VerticalAlignment="Top" Width="125" SelectionChanged="comboEmployee_SelectionChanged"/>
+        <TextBox x:Name="txtSearchCoustomer" HorizontalAlignment="Right" Margin="0,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.162,3.608" TextChanged="txtSearchCoustomer_TextChanged" />
     </Grid>
 </Page>
