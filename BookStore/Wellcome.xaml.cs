@@ -15,9 +15,6 @@ using Server;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class WindowWelcome : Window
     {
         public WindowWelcome()
@@ -251,10 +248,10 @@ namespace GUI
 
         private void nextWindow()
         {
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Show();
-            EmployeeLogIn login = new EmployeeLogIn();
-            login.Show();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            //EmployeeLogIn login = new EmployeeLogIn();
+            //login.Show();
             this.Close();
         }
     }

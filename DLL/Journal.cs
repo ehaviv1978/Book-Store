@@ -7,7 +7,7 @@ namespace DLL
     public enum JGenre { Sport, Science, LifeStile, Fusion};
     public class Journal :Item
     {
-        public static int CodeGenerator = 20000;
+        public static int CodeGenerator = 2000000;
         public JGenre Genre { get; set; }
         public DateTime? PrintDate { get; set; }
         public int ItemCode { get; set; }

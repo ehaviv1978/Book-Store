@@ -46,8 +46,8 @@
         </ListView>
 
         <Label Content="Store Items" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="84" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,0,70,414" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged"/>
-        <Button x:Name="BtnClearSerch" Content="Clear" HorizontalAlignment="Right" Margin="0,15,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50" Click="BtnClearSerch_Click"/>
+        <TextBox x:Name="TextBoxSerchItem" HorizontalAlignment="Right" Margin="0,15,70,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.162,3.608" FontSize="14" TextChanged="TextBoxSerchItem_TextChanged"/>
+        <Button x:Name="BtnClearSerch" Content="Clear" HorizontalAlignment="Right" Margin="0,14,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.35,-0.04" FontWeight="Normal" FontSize="14" Width="50" Click="BtnClearSerch_Click"/>
         <RadioButton x:Name="RadioAll" Content="All Items" HorizontalAlignment="Left" Margin="87,18,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="Items" Checked="RadioAll_Checked"/>
         <RadioButton x:Name="RadioJournals" Content="Journals" HorizontalAlignment="Left" Margin="221,19,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioJournals_Checked"/>
         <RadioButton x:Name="RadioBooks" Content="Books" HorizontalAlignment="Left" Margin="158,18,0,0" VerticalAlignment="Top" GroupName="Items" Checked="RadioBooks_Checked"/>

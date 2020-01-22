@@ -135,25 +135,10 @@ namespace GUI
         private void Serch(List<Item> Items)
         {
             shownItems.Clear();
-            //foreach (Item item in Items)
-            //{
-            //    string name = item.Name.ToLower().Replace(" ", "");
-            //    if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
-            //        shownItems.Add(item);
-            //}
-            shownItems =Items.FindAll(IsIncluded); //new code
+            shownItems = Items.FindAll((item => item.Name.ToLower().Replace(" ", "").
+                        Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", ""))));
             listViewItems.ItemsSource = shownItems;
             listViewItems.Items.Refresh();
-        }
-
-        private bool IsIncluded(Item item) //new function
-        {
-            string name = item.Name.ToLower().Replace(" ", "");
-            if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
-            {
-                return true;
-            }
-            return false;
         }
 
         private void BtnClearSerch_Click(object sender, RoutedEventArgs e)
@@ -177,36 +162,33 @@ namespace GUI
                 return;
 
             Item item = (Item)listViewItems.SelectedItems[0];
-            foreach (Book book in DB.DbBooks)
+
+            if (item.ItemCode/1000000 ==1)
             {
-                if (book.ItemCode == item.ItemCode)
+                Book book = DB.DbBooks.Find(book => book.ItemCode == item.ItemCode);
+                if (book.Stock > 0)
                 {
-                    if (book.Stock > 0)
-                    {
-                        book.Stock--;
-                        DB.DBCurentOrder.Add(book);
-                        MessageBox.Show("Item Add to order");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item not in Stock!!");
-                    }
+                    book.Stock--;
+                    DB.DBCurentOrder.Add(book);
+                    MessageBox.Show("Item Add to order");
+                }
+                else
+                {
+                    MessageBox.Show("Item not in Stock!!");
                 }
             }
-            foreach (Journal journal in DB.DbJournals)
+            else
             {
-                if (journal.ItemCode == item.ItemCode)
+                Journal journal = DB.DbJournals.Find(x => x.ItemCode == item.ItemCode);
+                if (journal.Stock > 0)
                 {
-                    if (journal.Stock > 0)
-                    {
-                        journal.Stock--;
-                        DB.DBCurentOrder.Add(journal);
-                        MessageBox.Show("Item Add to order");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item not in Stock!!");
-                    }
+                    journal.Stock--;
+                    DB.DBCurentOrder.Add(journal);
+                    MessageBox.Show("Item Add to order");
+                }
+                else
+                {
+                    MessageBox.Show("Item not in Stock!!");
                 }
             }
             listViewItems.Items.Refresh();
