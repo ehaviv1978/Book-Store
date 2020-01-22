@@ -135,14 +135,25 @@ namespace GUI
         private void Serch(List<Item> Items)
         {
             shownItems.Clear();
-            foreach (Item item in Items)
-            {
-                string name = item.Name.ToLower().Replace(" ", "");
-                if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
-                    shownItems.Add(item);
-            }
+            //foreach (Item item in Items)
+            //{
+            //    string name = item.Name.ToLower().Replace(" ", "");
+            //    if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
+            //        shownItems.Add(item);
+            //}
+            shownItems =Items.FindAll(IsIncluded); //new code
             listViewItems.ItemsSource = shownItems;
             listViewItems.Items.Refresh();
+        }
+
+        private bool IsIncluded(Item item) //new function
+        {
+            string name = item.Name.ToLower().Replace(" ", "");
+            if (name.Contains(TextBoxSerchItem.Text.ToLower().Replace(" ", "")))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void BtnClearSerch_Click(object sender, RoutedEventArgs e)
