@@ -38,6 +38,11 @@ namespace GUI
         private void comboDiscountBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboDiscountBy.Text = comboDiscountBy.SelectedItem.ToString();
+            comboUseValue.Text = "";
+            comboUseValue.ItemsSource = null;
+            comboUseValue.Items.Clear();
+            comboUseValue.SelectedItem = null;
+            comboUseValue.SelectedIndex = -1;
             comboUseValue.ItemsSource = null;
             switch (comboDiscountBy.Text.ToString())
             {
