@@ -11,12 +11,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using Microsoft.EntityFrameworkCore;
+
 
 
 namespace GUI
 {
     public partial class WindowWelcome : Window
     {
+        
         public WindowWelcome()
         {
             InitializeComponent();

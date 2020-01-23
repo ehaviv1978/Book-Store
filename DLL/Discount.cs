@@ -7,6 +7,7 @@ namespace DLL
     public enum DiscountField { BGenre, JGenre, BAuthor, BYearPublished };
     public class Discount
     {
+        public int Id { get; set; }
         public int Percent { get; set; }
         public DiscountField Property { get; set; }
         public string PropertyValue { get; set; }

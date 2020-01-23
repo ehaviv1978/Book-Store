@@ -2,8 +2,9 @@
 
 namespace DLL
 {
-    public interface Item
+    public abstract class Item
     {
+        public int Id { get; set; }
         public int ItemCode { get; set; }
         public string Name { get; set; }
         public int Stock { get; set; }
