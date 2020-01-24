@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 using DLL;
 using Server;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq;
 
 
 namespace GUI
@@ -22,6 +22,7 @@ namespace GUI
         
         public WindowWelcome()
         {
+       
             InitializeComponent();
             InitializeDbBook();
             InitializeDbJournals();
@@ -29,214 +30,143 @@ namespace GUI
             InitializeDbCustomers();
             InitializeDbTransactions();
             InitializeDBDiscounts();
+            InitializeDbTransactionItems();
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
         }
 
         public void InitializeDbCustomers()
         {
-            DB.DbCustomers.Add(new Customer()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var Coustomers = context.DbCustomers;
+            foreach (Person coustomer in Coustomers)
             {
-                FirstName = "Moshe",
-                LastName = "Huberman",
-                PhoneNumber = 0522154648,
-                Email = "MosheH@gmail.com",
-                Adress = "13 Shoshana st, Jerusalem",
-                Birthdate = new DateTime(1956, 12, 28),
-            });
-            DB.DbCustomers.Add(new Customer()
-            {
-                FirstName = "Gil",
-                LastName = "Liberman",
-                PhoneNumber = 0562153458,
-                Email = "Gliberman@gmail.com",
-                Adress = "84 Hadekel st, Yahud",
-                Birthdate = new DateTime(1999, 1, 8),
-            });
-            DB.DbCustomers.Add(new Customer()
-            {
-                FirstName = "Chack",
-                LastName = "Noris",
-                PhoneNumber = 0506154648,
-                Email = "Chacky@walla.co.il",
-                Adress = "198 Washington st, Los Angeles, US",
-                Birthdate = new DateTime(1956, 12, 28),
-            });
+                DB.DbCustomers.Add(new Customer()
+                {
+                    FirstName = coustomer.FirstName,
+                    LastName = coustomer.LastName,
+                    PhoneNumber = coustomer.PhoneNumber,
+                    Email = coustomer.Email,
+                    Adress = coustomer.Adress,
+                    Birthdate = coustomer.Birthdate,
+                    TotalSpent = 99.99,
+                });
+            }
         }
+
         public void InitializeDbEmployees()
         {
-            DB.DbEmployees.Add(new Employee()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var Employees = context.DbEmployees;
+            foreach (Employee employee in Employees)
             {
-                FirstName = "Eran",
-                LastName = "Haviv",
-                Password = "1",
-                Position = EPosition.Manager,
-                PhoneNumber = 0542174644,
-                Email = "ehaviv@hotmail.com",
-                Adress = "Kibutz Tzora",
-                Birthdate = new DateTime(1978, 4, 6),
-            });
-            DB.DbEmployees.Add(new Employee()
-            {
-                FirstName = "Van",
-                LastName = "Dam",
-                Password = "1",
-                Position = EPosition.Seller,
-                PhoneNumber = 0527007007,
-                Email = "DinL@gmail.com",
-                Adress = "Bet Shemesh",
-                Birthdate = new DateTime(1968, 1, 1),
-            });
-            DB.DbEmployees.Add(new Employee()
-            {
-                FirstName = "Bruce",
-                LastName = "Lee",
-                Password = "1",
-                Position = EPosition.Seller,
-                PhoneNumber = 0527000001,
-                Email = "BLee@gmail.com",
-                Adress = "Hong Kong, China",
-                Birthdate = new DateTime(1955, 12, 12),
-            });
+                DB.DbEmployees.Add(new Employee()
+                {
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    Password = employee.Password,
+                    Position = employee.Position,
+                    PhoneNumber = employee.PhoneNumber,
+                    Email = employee.Email,
+                    Adress = employee.Adress,
+                    Birthdate = employee.Birthdate,
+                });
+            }
         }
 
         public void InitializeDbBook()
         {
-            DB.DbBooks.Add(new Book()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var Books = context.DbBooks;
+            foreach (Book book in Books)
             {
-                Name = "Dune",
-                Author = "Frank Herbert",
-                Stock = 5,
-                Price = 25.99,
-                Genre = BGenre.SciFi,
-                Description = "Set in the distant future amidst a feudal interstellar society in which various noble houses control planetary fiefs, Dune tells the story of young Paul Atreides, whose family accepts the stewardship of the planet Arrakis. While the planet is an inhospitable and sparsely populated desert wasteland, it is the only source of melange, or \"the spice\", a drug that extends life and enhances mental abilities. Melange is also necessary for space navigation, which requires a kind of multidimensional awareness and foresight that only the drug provides.[6] As melange can only be produced on Arrakis, control of the planet is thus a coveted and dangerous undertaking. The story explores the multi-layered interactions of politics, religion, ecology, technology, and human emotion, as the factions of the empire confront each other in a struggle for the control of Arrakis and its spice.[7]",
-                YearPublished = 1990,
-                ISBN = 0441172717,
-                Pages = 412
-            });
-            DB.DbBooks.Add(new Book()
-            {
-                Name = "The English Patient",
-                Author = "Michael Ondaatje",
-                Stock = 2,
-                Price = 39.99,
-                Genre = BGenre.Novel,
-                Description = "The English Patient is a 1992 novel by Michael Ondaatje. The book follows four dissimilar people brought together at an Italian villa during the Italian Campaign of World War II. The four main characters are: an unrecognisably burned man — the eponymous patient, presumed to be English; his Canadian Army nurse, a Sikh British Army sapper, and a Canadian thief. The story occurs during the North African Campaign and centres on the incremental revelations of the patient's actions prior to his injuries, and the emotional effects of these revelations on the other characters.",
-                YearPublished = 1992,
-                ISBN = 0771068867,
-                Pages = 320
-            });
-            DB.DbBooks.Add(new Book()
-            {
-                Name = "Gone with the Wind",
-                Author = "Margaret Mitchell",
-                Stock = 1,
-                Price = 59.99,
-                Genre = BGenre.Novel,
-                Description = "This historical novel features a Bildungsroman or coming-of-age story",
-                YearPublished = 1936,
-                ISBN = 9780446365383,
-                Pages = 1030
-            });
-            DB.DbBooks.Add(new Book()
-            {
-                Name = "The Hobbit",
-                Author = "J. R. R. Tolkien",
-                Stock = 3,
-                Price = 29.99,
-                Genre = BGenre.Fantasy,
-                Description = "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction. The book remains popular and is recognized as a classic in children's literature.",
-                YearPublished = 1937,
-                ISBN = 9780618260300,
-                Pages = 310
-            });
+                DB.DbBooks.Add(new Book()
+                {
+                    Id = book.Id,
+                    Name = book.Name,
+                    Author = book.Author,
+                    Stock = book.Stock,
+                    Price = book.Price,
+                    Genre = book.Genre,
+                    Description = book.Description,
+                    YearPublished = book.YearPublished,
+                    ISBN = book.ISBN,
+                    Pages = book.Pages
+                }) ;
+            }
         }
 
         public void InitializeDbJournals()
         {
-            DB.DbJournals.Add(new Journal()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var journals = context.DbJournals;
+            foreach (Journal journal in journals)
             {
-                Name = "Popular Science",
-                Stock = 2,
-                Price = 4.99,
-                Genre = JGenre.Science,
-                Description = "American quarterly magazine carrying popular science content",
-                Edition = 45,
-                PrintDate = new DateTime(2020, 1, 1)
-            });
-            DB.DbJournals.Add(new Journal()
-            {
-                Name = "Popular Science",
-                Stock = 5,
-                Price = 4.99,
-                Genre = JGenre.Science,
-                Description = "American quarterly magazine carrying popular science content",
-                Edition = 46,
-                PrintDate = new DateTime(2020, 2, 1)
-            });
-            DB.DbJournals.Add(new Journal()
-            {
-                Name = "Vogue",
-                Stock = 7,
-                Price = 6.99,
-                Genre = JGenre.Fusion,
-                Description = " fashion and lifestyle magazine covering many topics including fashion, beauty, culture, living, and runway.",
-                Edition = 86,
-                PrintDate = new DateTime(2020, 1, 1)
-            });
-            DB.DbJournals.Add(new Journal()
-            {
-                Name = "Vogue",
-                Stock = 7,
-                Price = 6.99,
-                Genre = JGenre.Fusion,
-                Description = " fashion and lifestyle magazine covering many topics including fashion, beauty, culture, living, and runway.",
-                Edition = 87,
-                PrintDate = new DateTime(2020, 2, 1)
-            });
+                DB.DbJournals.Add(new Journal()
+                {
+                    Id = journal.Id,
+                    Name = journal.Name,
+                    Stock = journal.Stock,
+                    Price = journal.Price,
+                    Genre = journal.Genre,
+                    Description = journal.Description,
+                    Edition = journal.Edition,
+                    PrintDate = journal.PrintDate
+                });
+            }
         }
 
         public void InitializeDbTransactions()
         {
-            DB.DbTransactions.Add(new Transaction()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var transactions = context.DbTransactions
+                .Include(x => x.Buyer)
+                .Include(X => X.Seller);
+            foreach (Transaction transaction in transactions)
             {
-                Seller = DB.DbEmployees[1],
-                Buyer = DB.DbCustomers[0],
-                Price = 45.34,
-                Date = new DateTime(2019, 1, 1),
-                Items = new List<Item> { DB.DbBooks[2], DB.DbJournals[3] }
-            });
-            DB.DbTransactions.Add(new Transaction()
+                DB.DbTransactions.Add(new Transaction()
+                {
+                    Id = transaction.Id,
+                    Seller = transaction.Seller,
+                    Buyer = transaction.Buyer,
+                    Price = transaction.Price,
+                    Date = transaction.Date,
+                    Items = new List<Item>()// { DB.DbBooks[2], DB.DbJournals[3] }
+                }) ;
+            }
+          
+        }
+
+        public void InitializeDbTransactionItems()
+        {
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var transactionItems = context.DbTransactionItems;
+            foreach (TransactionItem transactionItem in transactionItems)
             {
-                Seller = DB.DbEmployees[0],
-                Buyer = DB.DbCustomers[2],
-                Price = 55.20,
-                Date = new DateTime(2018, 1, 1),
-                Items = new List<Item> { DB.DbBooks[1], DB.DbJournals[1], DB.DbBooks[0], DB.DbJournals[0] }
-            });
-            DB.DbTransactions.Add(new Transaction()
-            {
-                Seller = DB.DbEmployees[2],
-                Buyer = DB.DbCustomers[1],
-                Price = 60.99,
-                Date = new DateTime(2017, 10, 10),
-                Items = new List<Item> { DB.DbBooks[3], DB.DbJournals[3], DB.DbBooks[0], DB.DbJournals[2] }
-            });
+                DB.DbTransactionItems.Add(new TransactionItem()
+                {
+                    Id = transactionItem.Id,
+                    TransactionID = transactionItem.TransactionID,
+                    ItemID = transactionItem.ItemID
+                }) ;
+                    
+
+            }
         }
 
         public void InitializeDBDiscounts()
         {
-            DB.DBDiscounts.Add(new Discount()
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            var discounts = context.DBDiscounts;
+            foreach (Discount discount in discounts)
             {
-                Property = DiscountField.BGenre,
-                PropertyValue = BGenre.SciFi.ToString(),
-                Percent = 20
-            }) ;
-            DB.DBDiscounts.Add(new Discount()
-            {
-                Property = DiscountField.JGenre,
-                PropertyValue = JGenre.Fusion.ToString(),
-                Percent = 50
-            });
+                DB.DBDiscounts.Add(new Discount()
+                {
+                    Property = discount.Property,
+                    PropertyValue = discount.PropertyValue,
+                    Percent = discount.Percent
+                });
+            }
+             
         }
 
         void MainWindow_KeyDown(object sender, KeyEventArgs e)

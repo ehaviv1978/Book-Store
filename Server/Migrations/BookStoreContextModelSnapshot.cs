@@ -154,6 +154,24 @@ namespace Server.Migrations
                     b.ToTable("DbTransactions");
                 });
 
+            modelBuilder.Entity("Server.Data.BookStoreContext+TransactionItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransactionID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DbTransactionItems");
+                });
+
             modelBuilder.Entity("DLL.Book", b =>
                 {
                     b.HasBaseType("DLL.Item");
@@ -194,8 +212,8 @@ namespace Server.Migrations
                 {
                     b.HasBaseType("DLL.Person");
 
-                    b.Property<int>("TotalSpent")
-                        .HasColumnType("int");
+                    b.Property<double>("TotalSpent")
+                        .HasColumnType("float");
 
                     b.HasDiscriminator().HasValue("Customer");
                 });

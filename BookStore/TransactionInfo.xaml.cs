@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+
 
 namespace GUI
 {
@@ -28,11 +30,16 @@ namespace GUI
             txtItems.IsReadOnly = true;
             txtSeller.IsReadOnly = true;
             txtTotal.IsReadOnly = true;
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
 
             string items = "";
-            foreach (Item item in MainWindow.curentTransaction.Items)
+            foreach (TransactionItem itemId in DB.DbTransactionItems)
             {
-                items += item.ItemCode + "  -  " + item.Name + "\n";
+                if (MainWindow.curentTransaction.Id == itemId.TransactionID)
+                {
+                    var item = context.DBItems.Where(item => item.Id == itemId.ItemID).FirstOrDefault();
+                    items += item.ItemCode + "  -  " + item.Name + "\n";
+                }
             }
 
             txtTotal.Text = MainWindow.curentTransaction.Price.ToString();

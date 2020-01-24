@@ -8,7 +8,7 @@ namespace DLL
     {
         public int Id { get; set; }
         public static int CodeGenerator = 20000;
-        public int TotalSpent { get; set; }
+        public double TotalSpent { get; set; }
 
         public Customer()
         {

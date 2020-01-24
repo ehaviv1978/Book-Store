@@ -1,12 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using DLL;
-using System.Collections.Generic;
-
 
 namespace Server.Migrations
 {
-    public partial class Initial1 : Migration
+    public partial class initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +36,7 @@ namespace Server.Migrations
                     PhoneNumber = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
-                    TotalSpent = table.Column<int>(nullable: true),
+                    TotalSpent = table.Column<double>(nullable: true),
                     Position = table.Column<int>(nullable: true),
                     Password = table.Column<string>(nullable: true)
                 },
@@ -47,6 +44,7 @@ namespace Server.Migrations
                 {
                     table.PrimaryKey("PK_DbPersons", x => x.Id);
                 });
+
 
             migrationBuilder.CreateTable(
                 name: "DbTransactions",
@@ -57,8 +55,7 @@ namespace Server.Migrations
                     SellerId = table.Column<int>(nullable: true),
                     BuyerId = table.Column<int>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    Price = table.Column<double>(nullable: false),
-                    ItemsId = table.Column<List<int>>(nullable: false)
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,11 +91,11 @@ namespace Server.Migrations
                     Discriminator = table.Column<string>(nullable: false),
                     TransactionId = table.Column<int>(nullable: true),
                     Author = table.Column<string>(nullable: true),
-                    Book_Genre = table.Column<BGenre>(nullable: true),
+                    Genre = table.Column<int>(nullable: true),
                     YearPublished = table.Column<int>(nullable: true),
                     Pages = table.Column<int>(nullable: true),
                     ISBN = table.Column<long>(nullable: true),
-                    Journal_Genre = table.Column<JGenre>(nullable: true),
+                    Journal_Genre = table.Column<int>(nullable: true),
                     PrintDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
@@ -108,6 +105,32 @@ namespace Server.Migrations
                         name: "FK_DBItems_DbTransactions_TransactionId",
                         column: x => x.TransactionId,
                         principalTable: "DbTransactions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DbTransactionItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TransactionID = table.Column<int>(nullable: false),
+                    ItemID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DbTransactionItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DbTransactionItems_DbTransactions_Id",
+                        column: x => x.TransactionID,
+                        principalTable: "DbTransactions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DbTransactionItems_DBItems_Id",
+                        column: x => x.ItemID,
+                        principalTable: "DBItems",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -135,6 +158,9 @@ namespace Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "DBItems");
+
+            migrationBuilder.DropTable(
+                name: "DbTransactionItems");
 
             migrationBuilder.DropTable(
                 name: "DbTransactions");

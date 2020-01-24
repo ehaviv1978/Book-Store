@@ -14,17 +14,20 @@ namespace Server
         {
             using Data.BookStoreContext context = new Data.BookStoreContext();
 
-            List<Transaction> transactions = context.DbTransactions
-                .Where(x => x.Seller.FirstName!="")
-                .ToList();
-            Console.WriteLine(transactions[0].Price.ToString());
+
             //InitializeDbBook();
             //InitializeDbJournals();
             //InitializeDbEmployees();
             //InitializeDbCustomers();
             //InitializeDBDiscounts();
             //InitializeDbTransactions();
+            //InitializeDbTransactionItem();
             //context.SaveChanges();
+
+            //List<Transaction> transactions = context.DbTransactions
+            //   .Where(x => x.Seller.FirstName != "")
+            //   .ToList();
+            //Console.WriteLine(transactions[0].Price.ToString());
 
 
             void InitializeDbCustomers()
@@ -233,7 +236,7 @@ namespace Server
                     Buyer = (Customer)DbCustomers[0],
                     Price = 45.34,
                     Date = new DateTime(2019, 1, 1),
-                    Items = new List<Item> {(Book)DbBooks[2], (Journal)DbJournals[3] }
+                   // Items = new List<Item> {(Book)DbBooks[2], (Journal)DbJournals[3] }
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
@@ -241,7 +244,7 @@ namespace Server
                     Buyer = (Customer)DbCustomers[2],
                     Price = 55.20,
                     Date = new DateTime(2018, 1, 1),
-                    Items = new List<Item> { (Book)DbBooks[1], (Journal)DbJournals[1], (Book)DbBooks[0], (Journal)DbJournals[0] }
+                  //  Items = new List<Item> { (Book)DbBooks[1], (Journal)DbJournals[1], (Book)DbBooks[0], (Journal)DbJournals[0] }
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
@@ -249,7 +252,61 @@ namespace Server
                     Buyer = (Customer)DbCustomers[1],
                     Price = 60.99,
                     Date = new DateTime(2017, 10, 10),
-                    Items = new List<Item> { (Book)DbBooks[3], (Journal)DbJournals[3], (Book)DbBooks[0], (Journal)DbJournals[2] }
+                  //  Items = new List<Item> { (Book)DbBooks[3], (Journal)DbJournals[3], (Book)DbBooks[0], (Journal)DbJournals[2] }
+                });
+            }
+
+            void InitializeDbTransactionItem()
+            {
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 1,
+                    ItemID =1
+                }) ;
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 1,
+                    ItemID = 3
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 1,
+                    ItemID = 4
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 2,
+                    ItemID = 2
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 2,
+                    ItemID = 6
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 2,
+                    ItemID = 6
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 3,
+                    ItemID = 6
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 3,
+                    ItemID = 2
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 3,
+                    ItemID = 3
+                });
+                context.DbTransactionItems.Add(new TransactionItem()
+                {
+                    TransactionID = 3,
+                    ItemID = 5
                 });
             }
         }
