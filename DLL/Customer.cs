@@ -12,8 +12,8 @@ namespace DLL
 
         public Customer()
         {
-            CodeGenerator++;
-            PersonStoreID = CodeGenerator;
+            PersonStoreID = Convert.ToInt64((DateTime.Now.Ticks).ToString().
+                 Substring((DateTime.Now.Ticks).ToString().Length - 9)) + 2000000000;
         }
     }
 

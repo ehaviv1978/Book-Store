@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Server.Migrations
 {
-    public partial class initial2 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace Server.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonStoreID = table.Column<int>(nullable: false),
+                    PersonStoreID = table.Column<long>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Birthdate = table.Column<DateTime>(nullable: true),
@@ -80,7 +80,7 @@ namespace Server.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemCode = table.Column<int>(nullable: false),
+                    ItemCode = table.Column<long>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Stock = table.Column<int>(nullable: false),
                     Price = table.Column<double>(nullable: false),
@@ -110,30 +110,30 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DbTransactionItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TransactionID = table.Column<int>(nullable: false),
-                    ItemID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DbTransactionItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DbTransactionItems_DbTransactions_Id",
-                        column: x => x.TransactionID,
-                        principalTable: "DbTransactions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DbTransactionItems_DBItems_Id",
-                        column: x => x.ItemID,
-                        principalTable: "DBItems",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
+               name: "DbTransactionItems",
+               columns: table => new
+               {
+                   Id = table.Column<int>(nullable: false)
+                       .Annotation("SqlServer:Identity", "1, 1"),
+                   TransactionID = table.Column<int>(nullable: false),
+                   ItemID = table.Column<int>(nullable: false)
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_DbTransactionItems", x => x.Id);
+                   table.ForeignKey(
+                       name: "FK_DbTransactionItems_DbTransactions_Id",
+                       column: x => x.TransactionID,
+                       principalTable: "DbTransactions",
+                       principalColumn: "Id",
+                       onDelete: ReferentialAction.Restrict);
+                   table.ForeignKey(
+                       name: "FK_DbTransactionItems_DBItems_Id",
+                       column: x => x.ItemID,
+                       principalTable: "DBItems",
+                       principalColumn: "Id",
+                       onDelete: ReferentialAction.Restrict);
+               });
 
             migrationBuilder.CreateIndex(
                 name: "IX_DBItems_TransactionId",

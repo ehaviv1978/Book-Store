@@ -10,8 +10,8 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    [Migration("20200123123009_initial2")]
-    partial class initial2
+    [Migration("20200125062541_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,8 +65,8 @@ namespace Server.Migrations
                     b.Property<double>("FinalPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("ItemCode")
-                        .HasColumnType("int");
+                    b.Property<long>("ItemCode")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -115,8 +115,8 @@ namespace Server.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonStoreID")
-                        .HasColumnType("int");
+                    b.Property<long>("PersonStoreID")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
@@ -156,7 +156,7 @@ namespace Server.Migrations
                     b.ToTable("DbTransactions");
                 });
 
-            modelBuilder.Entity("Server.Data.BookStoreContext+TransactionItem", b =>
+            modelBuilder.Entity("DLL.TransactionItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

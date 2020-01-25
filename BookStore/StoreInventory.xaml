@@ -34,7 +34,7 @@
 
             <ListView.View>
                 <GridView x:Name="GridViewItems">
-                    <GridViewColumn Header="Item Code" Width="80" DisplayMemberBinding="{Binding ItemCode}" />
+                    <GridViewColumn Header="Item Code" Width="100" DisplayMemberBinding="{Binding ItemCode}" />
                     <GridViewColumn Header="Item Name" Width="200" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Edition" Width="50" DisplayMemberBinding="{Binding Edition}" />
                     <GridViewColumn Header="Stock" Width="40" DisplayMemberBinding="{Binding Stock}" />

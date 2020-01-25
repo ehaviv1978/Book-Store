@@ -8,15 +8,14 @@ namespace DLL
     public class Journal :Item
     {
         public int Id { get; set; }
-        public static int CodeGenerator = 2000000;
         public JGenre Genre { get; set; }
         public DateTime? PrintDate { get; set; }
 
         public Journal()
         {
             Discount = 0;
-            CodeGenerator++;
-            ItemCode = CodeGenerator;
+            ItemCode = Convert.ToInt64((DateTime.Now.Ticks).ToString().
+                Substring((DateTime.Now.Ticks).ToString().Length - 9)) + 2000000000;
         }
     }
 }

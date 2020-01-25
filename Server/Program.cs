@@ -27,7 +27,7 @@ namespace Server
             //List<Transaction> transactions = context.DbTransactions
             //   .Where(x => x.Seller.FirstName != "")
             //   .ToList();
-            //Console.WriteLine(transactions[0].Price.ToString());
+            // Console.WriteLine((DateTime.Now.Ticks).ToString().Substring((DateTime.Now.Ticks).ToString().Length - 9));
 
 
             void InitializeDbCustomers()
@@ -60,7 +60,7 @@ namespace Server
                     Birthdate = new DateTime(1956, 12, 28),
                 });
             }
-            
+
             void InitializeDbEmployees()
             {
                 context.DbEmployees.Add(new Employee()
@@ -210,25 +210,16 @@ namespace Server
                 });
             }
 
-            //var DbEmployees = context.DbPersons
-            //    .Where(p => p.PersonStoreID <20000).ToList();
-            //var DbCustomers = context.DbPersons
-            //    .Where(p => p.PersonStoreID > 20000).ToList();
-            //var DbBooks = context.DBItems
-            //    .Where(i => i.ItemCode < 2000000).ToList();
-            //var DbJournals = context.DBItems
-            //    .Where(i => i.ItemCode > 2000000).ToList();
-
             void InitializeDbTransactions()
             {
                 var DbEmployees = context.DbPersons
-                    .Where(p => p.PersonStoreID<20000).ToList();
+                    .Where(p => p.PersonStoreID < 2000000000).ToList();
                 var DbCustomers = context.DbPersons
-                    .Where(p => p.PersonStoreID > 20000).ToList();
+                    .Where(p => p.PersonStoreID > 2000000000).ToList();
                 var DbBooks = context.DBItems
-                    .Where(i => i.ItemCode < 2000000).ToList();
+                    .Where(i => i.ItemCode < 2000000000).ToList();
                 var DbJournals = context.DBItems
-                    .Where(i => i.ItemCode > 2000000).ToList();
+                    .Where(i => i.ItemCode > 2000000000).ToList();
 
                 context.DbTransactions.Add(new Transaction()
                 {
@@ -236,7 +227,6 @@ namespace Server
                     Buyer = (Customer)DbCustomers[0],
                     Price = 45.34,
                     Date = new DateTime(2019, 1, 1),
-                   // Items = new List<Item> {(Book)DbBooks[2], (Journal)DbJournals[3] }
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
@@ -244,7 +234,6 @@ namespace Server
                     Buyer = (Customer)DbCustomers[2],
                     Price = 55.20,
                     Date = new DateTime(2018, 1, 1),
-                  //  Items = new List<Item> { (Book)DbBooks[1], (Journal)DbJournals[1], (Book)DbBooks[0], (Journal)DbJournals[0] }
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
@@ -252,7 +241,6 @@ namespace Server
                     Buyer = (Customer)DbCustomers[1],
                     Price = 60.99,
                     Date = new DateTime(2017, 10, 10),
-                  //  Items = new List<Item> { (Book)DbBooks[3], (Journal)DbJournals[3], (Book)DbBooks[0], (Journal)DbJournals[2] }
                 });
             }
 
@@ -261,8 +249,8 @@ namespace Server
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
                     TransactionID = 1,
-                    ItemID =1
-                }) ;
+                    ItemID = 1
+                });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
                     TransactionID = 1,

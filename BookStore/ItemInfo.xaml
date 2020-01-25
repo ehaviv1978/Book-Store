@@ -33,7 +33,7 @@
         <Label x:Name="lblISBN" Content="ISBN:" HorizontalAlignment="Left" Margin="88,306,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtISBN" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="144,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="14"/>
         <Label x:Name="lblCode" Content="Item Code:" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtCode" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" FontSize="14"/>
+        <TextBox x:Name="txtCode" MaxLength="6" HorizontalAlignment="Left" TextChanged="TextBoxSerchItem_TextChanged"  Margin="144,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" FontSize="14"/>
         <TextBox x:Name="txtYearPublished" HorizontalAlignment="Left" Margin="144,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
         <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Margin="386,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontSize="14"/>
         <Button x:Name="btnAddToOrder" Content="Add to Order" HorizontalAlignment="Left" Margin="434,358,0,0" VerticalAlignment="Top" Height="32" Width="103" FontWeight="Bold" FontSize="14" Click="btnAddToOrder_Click"/>

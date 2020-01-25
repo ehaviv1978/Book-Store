@@ -24,149 +24,22 @@ namespace GUI
         {
        
             InitializeComponent();
-            InitializeDbBook();
-            InitializeDbJournals();
-            InitializeDbEmployees();
-            InitializeDbCustomers();
-            InitializeDbTransactions();
-            InitializeDBDiscounts();
-            InitializeDbTransactionItems();
+            InitializeDB();
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
         }
 
-        public void InitializeDbCustomers()
+        public void InitializeDB()
         {
             using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var Coustomers = context.DbCustomers;
-            foreach (Person coustomer in Coustomers)
-            {
-                DB.DbCustomers.Add(new Customer()
-                {
-                    FirstName = coustomer.FirstName,
-                    LastName = coustomer.LastName,
-                    PhoneNumber = coustomer.PhoneNumber,
-                    Email = coustomer.Email,
-                    Adress = coustomer.Adress,
-                    Birthdate = coustomer.Birthdate,
-                    TotalSpent = 99.99,
-                });
-            }
-        }
-
-        public void InitializeDbEmployees()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var Employees = context.DbEmployees;
-            foreach (Employee employee in Employees)
-            {
-                DB.DbEmployees.Add(new Employee()
-                {
-                    FirstName = employee.FirstName,
-                    LastName = employee.LastName,
-                    Password = employee.Password,
-                    Position = employee.Position,
-                    PhoneNumber = employee.PhoneNumber,
-                    Email = employee.Email,
-                    Adress = employee.Adress,
-                    Birthdate = employee.Birthdate,
-                });
-            }
-        }
-
-        public void InitializeDbBook()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var Books = context.DbBooks;
-            foreach (Book book in Books)
-            {
-                DB.DbBooks.Add(new Book()
-                {
-                    Id = book.Id,
-                    Name = book.Name,
-                    Author = book.Author,
-                    Stock = book.Stock,
-                    Price = book.Price,
-                    Genre = book.Genre,
-                    Description = book.Description,
-                    YearPublished = book.YearPublished,
-                    ISBN = book.ISBN,
-                    Pages = book.Pages
-                }) ;
-            }
-        }
-
-        public void InitializeDbJournals()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var journals = context.DbJournals;
-            foreach (Journal journal in journals)
-            {
-                DB.DbJournals.Add(new Journal()
-                {
-                    Id = journal.Id,
-                    Name = journal.Name,
-                    Stock = journal.Stock,
-                    Price = journal.Price,
-                    Genre = journal.Genre,
-                    Description = journal.Description,
-                    Edition = journal.Edition,
-                    PrintDate = journal.PrintDate
-                });
-            }
-        }
-
-        public void InitializeDbTransactions()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var transactions = context.DbTransactions
+            DB.DbCustomers = context.DbCustomers.ToList<Customer>();
+            DB.DbEmployees = context.DbEmployees.ToList<Employee>();
+            DB.DbBooks = context.DbBooks.ToList<Book>();
+            DB.DbJournals = context.DbJournals.ToList<Journal>();
+            DB.DbTransactions = context.DbTransactions
                 .Include(x => x.Buyer)
-                .Include(X => X.Seller);
-            foreach (Transaction transaction in transactions)
-            {
-                DB.DbTransactions.Add(new Transaction()
-                {
-                    Id = transaction.Id,
-                    Seller = transaction.Seller,
-                    Buyer = transaction.Buyer,
-                    Price = transaction.Price,
-                    Date = transaction.Date,
-                    Items = new List<Item>()// { DB.DbBooks[2], DB.DbJournals[3] }
-                }) ;
-            }
-          
-        }
-
-        public void InitializeDbTransactionItems()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var transactionItems = context.DbTransactionItems;
-            foreach (TransactionItem transactionItem in transactionItems)
-            {
-                DB.DbTransactionItems.Add(new TransactionItem()
-                {
-                    Id = transactionItem.Id,
-                    TransactionID = transactionItem.TransactionID,
-                    ItemID = transactionItem.ItemID
-                }) ;
-                    
-
-            }
-        }
-
-        public void InitializeDBDiscounts()
-        {
-            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            var discounts = context.DBDiscounts;
-            foreach (Discount discount in discounts)
-            {
-                DB.DBDiscounts.Add(new Discount()
-                {
-                    Property = discount.Property,
-                    PropertyValue = discount.PropertyValue,
-                    Percent = discount.Percent
-                });
-            }
-             
+                .Include(X => X.Seller).ToList<Transaction>();
+            DB.DbTransactionItems = context.DbTransactionItems.ToList<TransactionItem>();
+            DB.DBDiscounts = context.DBDiscounts.ToList<Discount>();
         }
 
         void MainWindow_KeyDown(object sender, KeyEventArgs e)

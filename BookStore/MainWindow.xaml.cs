@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Server;
+using System.Globalization;
 
 namespace GUI
 {
@@ -23,13 +24,14 @@ namespace GUI
     public partial class MainWindow : Window
     {
         public static Employee currentEmployee = new Employee();
-        public static int currentItemCode;
-        public static int currentPersonID;
+        public static long currentItemCode;
+        public static long currentPersonID;
         public static string user = "manager";
         public static Transaction curentTransaction = new Transaction();
         
         public MainWindow()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             InitializeComponent();
             Main.Content = new StoreInventory();
         }

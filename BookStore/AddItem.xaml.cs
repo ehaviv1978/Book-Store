@@ -17,9 +17,7 @@ using Server;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for AddItem.xaml
-    /// </summary>
+  
     public partial class AddItem : Page
     {
         public AddItem()
@@ -97,6 +95,7 @@ namespace GUI
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
             if (txtName.Text == "" || txtStock.Text=="" || txtPrice.Text =="")
             {
                 MessageBox.Show("Must enter Name, Stock and Price!!");
@@ -104,51 +103,38 @@ namespace GUI
             }
             if (radioBook.IsChecked == true)
             {
-                Book book = new Book();
-                book.Name = txtName.Text;
-                book.Stock = Convert.ToInt32(txtStock.Text);
-                book.Price = Convert.ToDouble(txtPrice.Text);
-                book.Price = Math.Round(book.Price, 2);
-                if (ComboGenre.SelectedItem != null)
+                context.DbBooks.Add(new Book()
                 {
-                    book.Genre = (DLL.BGenre)ComboGenre.SelectedItem;
-                }
-                book.Author = txtAuthor.Text;
-                if (txtPages.Text != "")
-                {
-                    book.Pages = Convert.ToInt32(txtPages.Text);
-                }
-                if (comboPublishedYear.Text != "")
-                {
-                    book.YearPublished = Convert.ToInt32(comboPublishedYear.Text);
-                }
-                if (txtISBN.Text != "")
-                {
-                    book.ISBN = Convert.ToInt64(txtISBN.Text);
-                }
-                book.Description = txtDescription.Text;
-
-                DB.DbBooks.Add(book);
+                    Name = txtName.Text,
+                    Author = txtAuthor.Text,
+                    Stock = (txtStock.Text == "") ? 0 : Convert.ToInt32(txtStock.Text),
+                    Price = (txtPrice.Text == "") ? 0 : Convert.ToDouble(txtPrice.Text),
+                    Genre = (ComboGenre.Text == "") ? (BGenre)(-1) :(BGenre)ComboGenre.SelectedItem,
+                    Description = txtDescription.Text,
+                    YearPublished = (comboPublishedYear.Text == "") ? 9999 :Convert.ToInt32(comboPublishedYear.Text),
+                    ISBN = (txtISBN.Text == "") ? 0 : Convert.ToInt64(txtISBN.Text),                
+                    Pages = (txtPages.Text == "") ? 0 : Convert.ToInt32(txtPages.Text) 
+                        
+                });
+               
+                context.SaveChanges();
+                DB.DbBooks = context.DbBooks.ToList<Book>();
             }
             else
             {
-                Journal journal = new Journal();
-                journal.Name = txtName.Text;
-                journal.Stock = Convert.ToInt32(txtStock.Text);
-                journal.Price = Convert.ToDouble(txtPrice.Text);
-                journal.Price = Math.Round(journal.Price, 2);
-                if (ComboGenre.SelectedItem != null)
+                context.DbJournals.Add(new Journal()
                 {
-                    journal.Genre = (DLL.JGenre)ComboGenre.SelectedItem;
-                }
-                if (txtEdition.Text != "")
-                {
-                    journal.Edition = Convert.ToInt32(txtEdition.Text);
-                }
-                journal.PrintDate = datePrintDate.SelectedDate;
-                journal.Description = txtDescription.Text;
+                    Name = txtName.Text,
+                    Stock = (txtStock.Text == "") ? 0 : Convert.ToInt32(txtStock.Text),
+                    Price = (txtPrice.Text == "") ? 0 : Convert.ToDouble(txtPrice.Text),
+                    Genre = (ComboGenre.Text == "") ? (JGenre)(-1) : (JGenre)ComboGenre.SelectedItem,
+                    Description = txtDescription.Text,
+                    Edition = (txtEdition.Text =="") ? 0 :Convert.ToInt32(txtEdition.Text),
+                    PrintDate = datePrintDate.SelectedDate,
+                });
 
-                DB.DbJournals.Add(journal);
+                context.SaveChanges();
+                DB.DbJournals = context.DbJournals.ToList();
             }
             MessageBox.Show("New Item Add to Inventory");
             NavigationService.Navigate(new StoreInventory());

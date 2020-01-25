@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using DLL;
 using Server;
 using System.Text.RegularExpressions;
-
+using System.Linq;
 
 namespace GUI
 {
@@ -168,26 +168,20 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                foreach (Book book in DB.DbBooks)
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                foreach (Item item in context.DBItems)
                 {
-                    if (book.ItemCode == curentItem.ItemCode)
+                    if (item.ItemCode == curentItem.ItemCode)
                     {
-                        DB.DbBooks.Remove(book);
-                        MessageBox.Show("Item Deleted");
-                        NavigationService.Navigate(new StoreInventory());
+                        context.DBItems.Remove(item);
                         break;
                     }
-                }
-                foreach (Journal journal in DB.DbJournals)
-                {
-                    if (journal.ItemCode == curentItem.ItemCode)
-                    {
-                        DB.DbJournals.Remove(journal);
-                        MessageBox.Show("Item Deleted");
-                        NavigationService.Navigate(new StoreInventory());
-                        break;
-                    }
-                }
+                }           
+                context.SaveChanges();
+                DB.DbBooks = context.DbBooks.ToList();
+                DB.DbJournals = context.DbJournals.ToList();
+                MessageBox.Show("Item Deleted");
+                NavigationService.Navigate(new StoreInventory());
             }
         }
 
@@ -260,7 +254,7 @@ namespace GUI
                         {
                             journal.Description = txtDescription.Text;
                             journal.Name = txtName.Text;
-                            journal.Price = Convert.ToInt32(txtPrice.Text);
+                            journal.Price = Convert.ToDouble(txtPrice.Text);
                             journal.Stock = Convert.ToInt32(txtStock.Text);
                             journal.Description = txtDescription.Text;
                             journal.Edition = Convert.ToInt32(txtEdition.Text);

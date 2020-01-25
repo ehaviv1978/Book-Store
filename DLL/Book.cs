@@ -8,7 +8,6 @@ namespace DLL
     public class Book : Item
     {
         public int Id { get; set; }
-        public static int CodeGenerator = 1000000;
         public string Author { get; set; }
         public BGenre Genre { get; set; }
         public int YearPublished { get; set; }
@@ -18,8 +17,8 @@ namespace DLL
         public Book()
         {
             Discount = 0;
-            CodeGenerator++;
-            ItemCode = CodeGenerator;
+            ItemCode = Convert.ToInt64((DateTime.Now.Ticks).ToString().
+                Substring((DateTime.Now.Ticks).ToString().Length - 9)) + 1000000000;
         }
     }
 }
