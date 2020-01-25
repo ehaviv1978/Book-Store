@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using DLL;
 using Server;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 
 namespace GUI
@@ -38,6 +39,7 @@ namespace GUI
         {
             if (txtFirstName.Text != "" && txtLastName.Text != "" && txtPhoneNumber.Text != "" && comboPosition.Text !="")
             {
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 Employee newEmployee = new Employee();
                 newEmployee.FirstName = txtFirstName.Text;
                 newEmployee.LastName = txtLastName.Text;
@@ -49,9 +51,11 @@ namespace GUI
                     newEmployee.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
                 }
                 newEmployee.Email = txtEmail.Text;
-                newEmployee.Position = (DLL.EPosition)comboPosition.SelectedItem;
+                newEmployee.Position = (EPosition)comboPosition.SelectedItem;
 
-                DB.DbEmployees.Add(newEmployee);
+                context.DbEmployees.Add(newEmployee);
+                context.SaveChanges();
+                DB.DbEmployees = context.DbEmployees.ToList();
                 MessageBox.Show("New Employee Add");
                 NavigationService.Navigate(new Contacts());
             }

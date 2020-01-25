@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace GUI
 {
@@ -101,19 +103,30 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Order Confirm", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                List<Item> order = new List<Item>();
-                foreach (Item item in DB.DBCurentOrder)
-                {
-                    order.Add(item);
-                }
-                Transaction sell = new Transaction();
-                sell.Buyer = buyer;
-                sell.Date = DateTime.Now;
-                sell.Seller = seller;
-                sell.Items = order;
-                sell.Price = totalPrice;
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
 
-                DB.DbTransactions.Add(sell);
+                //List<Item> order = new List<Item>();
+                //foreach (Item item in DB.DBCurentOrder)
+                //{
+                //    order.Add(item);
+                //}
+                //Transaction sell = new Transaction();
+                //sell.Buyer = buyer;
+                //sell.Date = DateTime.Now;
+                //sell.Seller = seller;
+                ////sell.Items = order;
+                //sell.Price = totalPrice;
+
+                context.DbTransactions.Add(new Transaction()
+                {
+                    Seller = seller,
+                    Buyer = buyer,
+                    Price = totalPrice,
+                    Date = DateTime.Now,
+                });
+                //context.DbTransactions.Add(sell);
+                context.SaveChanges();
+                DB.DbTransactions = context.DbTransactions.Include(x => x.Buyer).Include(X => X.Seller).ToList();
                 DB.DBCurentOrder.Clear();
                 MessageBox.Show("Order Confirmed");
                 NavigationService.Navigate(new TransactionHistory());

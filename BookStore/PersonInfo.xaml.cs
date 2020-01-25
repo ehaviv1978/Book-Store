@@ -12,12 +12,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for PersonInfo.xaml
-    /// </summary>
     public partial class PersonInfo : Page
     {
         bool isEmployee;
@@ -119,60 +118,65 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Change Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 txtStoreID.Text = MainWindow.currentPersonID.ToString();
-                foreach (Customer coustomer in DB.DbCustomers)
+                if (MainWindow.currentPersonID > 2000000000)
                 {
-                    if (coustomer.PersonStoreID == MainWindow.currentPersonID)
+                    foreach (Customer coustomer in context.DbCustomers)
                     {
-                        coustomer.FirstName = txtFirstName.Text;
-                        coustomer.LastName = txtLastName.Text;
-                        coustomer.Adress = txtAddress.Text;
-                        coustomer.Email = txtEmail.Text;
-                        coustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
-                        coustomer.Birthdate = datePickerBirthDate.SelectedDate;
-                    }
-                }
-                foreach (Employee employee in DB.DbEmployees)
-                {
-                    if (employee.PersonStoreID == MainWindow.currentPersonID)
-                    {
-                        if (txtEmployeePosition.Text == "Seller")
+                        if (coustomer.PersonStoreID == MainWindow.currentPersonID)
                         {
-                            int counter = 0;
-                            foreach (Employee employee1 in DB.DbEmployees)
+                            coustomer.FirstName = txtFirstName.Text;
+                            coustomer.LastName = txtLastName.Text;
+                            coustomer.Adress = txtAddress.Text;
+                            coustomer.Email = txtEmail.Text;
+                            coustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                            coustomer.Birthdate = datePickerBirthDate.SelectedDate;
+                        }
+                    }
+                    context.SaveChanges();
+                    DB.DbCustomers = context.DbCustomers.ToList();
+                }
+                else
+                {
+                    foreach (Employee employee in context.DbEmployees)
+                    {
+                        if (employee.PersonStoreID == MainWindow.currentPersonID)
+                        {
+                            if (txtEmployeePosition.Text == "Seller" && employee.Position == EPosition.Manager)
                             {
-                                if (employee1.Position.ToString() == "Manager")
+                                int counter = 0;
+                                foreach (Employee employee1 in DB.DbEmployees)
                                 {
-                                    counter++;
+                                    if (employee1.Position.ToString() == "Manager")
+                                    {
+                                        counter++;
+                                    }
+                                }
+                                if (counter < 2)
+                                {
+                                    MessageBox.Show("Store must have at list one manager");
+                                    return;
                                 }
                             }
-                            if (counter < 2)
+                            if (comboEmployeePosition.Text != "")
                             {
-                                MessageBox.Show("Store must have at list one manager");
-                                return;
+                                employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
                             }
+                            employee.FirstName = txtFirstName.Text;
+                            employee.LastName = txtLastName.Text;
+                            employee.Adress = txtAddress.Text;
+                            employee.Email = txtEmail.Text;
+                            employee.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                            employee.Birthdate = datePickerBirthDate.SelectedDate;
                         }
-                        if (comboEmployeePosition.Text != "")
-                        {
-                            employee.Position = (DLL.EPosition)comboEmployeePosition.SelectedItem;
-                        }
-                        employee.FirstName = txtFirstName.Text;
-                        employee.LastName = txtLastName.Text;
-                        employee.Adress = txtAddress.Text;
-                        employee.Email = txtEmail.Text;
-                        employee.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
-                        employee.Birthdate = datePickerBirthDate.SelectedDate;
                     }
+                    context.SaveChanges();
+                    DB.DbEmployees = context.DbEmployees.ToList();
                 }
-                //lblUser.Content = "hello";// $"{employee.FirstName} {employee.LastName} - {employee.Position}";
                 MessageBox.Show("Changes Saved");
                 NavigationService.Navigate(new Contacts());
             }
-        }
-
-        private void changeEmployeePosition()
-        {
-            txtEmployeePosition.Text = comboEmployeePosition.Text;
         }
 
         private void comboEmployeePosition_SelectionChanged(object sender, SelectionChangedEventArgs e)

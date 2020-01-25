@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+
 
 namespace GUI
 {
@@ -26,7 +28,7 @@ namespace GUI
             for (int i = 1; i < 101; i++)
             {
                 ComboPercent.Items.Add(i);
-                comboDiscountBy.ItemsSource = Enum.GetValues(typeof(DLL.DiscountField));
+                comboDiscountBy.ItemsSource = Enum.GetValues(typeof(DiscountField));
             }
         }
 
@@ -47,10 +49,10 @@ namespace GUI
             switch (comboDiscountBy.Text.ToString())
             {
                 case "BGenre":
-                    comboUseValue.ItemsSource = Enum.GetValues(typeof(DLL.BGenre));
+                    comboUseValue.ItemsSource = Enum.GetValues(typeof(BGenre));
                     break;
                 case "JGenre":
-                    comboUseValue.ItemsSource = Enum.GetValues(typeof(DLL.JGenre));
+                    comboUseValue.ItemsSource = Enum.GetValues(typeof(JGenre));
                     break;
                 case "BAuthor":
                     foreach (Book book in DB.DbBooks)
@@ -76,12 +78,15 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Discount", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                DB.DBDiscounts.Add(new Discount()
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                context.DBDiscounts.Add(new Discount()
                 {
                     Property = (DiscountField)comboDiscountBy.SelectedItem,
                     PropertyValue = comboUseValue.Text,
                     Percent = Convert.ToInt32(ComboPercent.Text)
                 }) ;
+                context.SaveChanges();
+                DB.DBDiscounts = context.DBDiscounts.ToList();
                 MessageBox.Show("Discount add");
                 NavigationService.Navigate(new DiscountList());
 

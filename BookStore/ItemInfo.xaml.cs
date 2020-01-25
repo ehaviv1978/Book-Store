@@ -58,7 +58,11 @@ namespace GUI
             txtYearPublished.IsReadOnly = true;
             txtPages.IsReadOnly = true;
             txtEdition.IsReadOnly = true;
+            itemBook();
+        }
 
+        private void itemBook()
+        {
             foreach (Book book in DB.DbBooks)
             {
                 if (book.ItemCode== MainWindow.currentItemCode)
@@ -83,11 +87,10 @@ namespace GUI
 
                     lblEdition.Visibility = Visibility.Hidden;
                     lblPrintDate.Visibility = Visibility.Hidden;
-                    break;
+                    return;
                 }
-                itemJournal();
             }
-
+            itemJournal();
         }
 
         private void itemJournal()
@@ -129,7 +132,7 @@ namespace GUI
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void TextBoxSerchItem_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string strTemp = txtPrice.Text;
             int i = 0;
@@ -152,7 +155,11 @@ namespace GUI
         {
             if (curentItem.Stock > 0)
             {
-                curentItem.Stock--;
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                var item = context.DBItems.Where(x => x.Id == curentItem.Id).FirstOrDefault();
+                item.Stock--;
+                context.SaveChanges();
+                curentItem.Stock = item.Stock;
                 DB.DBCurentOrder.Add(curentItem);
                 txtStock.Text = curentItem.Stock.ToString();
                 MessageBox.Show("Item Add to order");
@@ -226,42 +233,42 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Change Confirmation", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 if (itemType == "book")
                 {
-                    foreach (Book book in DB.DbBooks)
-                    {
-                        if (book.ItemCode == MainWindow.currentItemCode)
-                        {
-                            book.Description = txtDescription.Text;
-                            book.Name = txtName.Text;
-                            book.Price = Convert.ToDouble(txtPrice.Text);
-                            book.Stock = Convert.ToInt32(txtStock.Text);
-                            book.Description = txtDescription.Text;
-                            book.Author = txtAuthor.Text;
-                            book.ISBN = Convert.ToInt32(txtISBN.Text);
-                            book.Pages = Convert.ToInt32(txtPages.Text);
-                            book.YearPublished = Convert.ToInt32(txtYearPublished.Text);
-                            book.Genre = (BGenre)ComboGenre.SelectedItem;
-                            break;
-                        }
-                    }
+                    var book = context.DbBooks.Where(x => x.Id == curentItem.Id).FirstOrDefault();
+                    book.Description = txtDescription.Text;
+                    book.Name = txtName.Text;
+                    book.Price = Convert.ToDouble(txtPrice.Text);
+                    book.Stock = Convert.ToInt32(txtStock.Text);
+                    book.Description = txtDescription.Text;
+                    book.Author = txtAuthor.Text;
+                    book.ISBN = Convert.ToInt64(txtISBN.Text);
+                    book.Pages = Convert.ToInt32(txtPages.Text);
+                    book.YearPublished = Convert.ToInt32(txtYearPublished.Text);
+                    book.Genre = (BGenre)ComboGenre.SelectedItem;
+
+                    context.SaveChanges();
+                    DB.DbBooks = context.DbBooks.ToList();
+
                 }
                 else
                 {
-                    foreach (Journal journal in DB.DbJournals)
-                    {
-                        if (journal.ItemCode == MainWindow.currentItemCode)
-                        {
-                            journal.Description = txtDescription.Text;
-                            journal.Name = txtName.Text;
-                            journal.Price = Convert.ToDouble(txtPrice.Text);
-                            journal.Stock = Convert.ToInt32(txtStock.Text);
-                            journal.Description = txtDescription.Text;
-                            journal.Edition = Convert.ToInt32(txtEdition.Text);
-                            journal.PrintDate = datePrintDate.SelectedDate;
-                            break;
-                        }
-                    }
+                    var journal = context.DbJournals.Where(x => x.Id == curentItem.Id).FirstOrDefault();
+
+                    journal.Description = txtDescription.Text;
+                    journal.Name = txtName.Text;
+                    journal.Price = Convert.ToDouble(txtPrice.Text);
+                    journal.Stock = Convert.ToInt32(txtStock.Text);
+                    journal.Description = txtDescription.Text;
+                    journal.Edition = Convert.ToInt32(txtEdition.Text);
+                    journal.PrintDate = datePrintDate.SelectedDate;
+                    journal.Genre = (JGenre)ComboGenre.SelectedItem;
+
+
+                    context.SaveChanges();
+                    DB.DbJournals = context.DbJournals.ToList();
+
                 }
                 MessageBox.Show("Changes Saved");
                 NavigationService.Navigate(new StoreInventory());

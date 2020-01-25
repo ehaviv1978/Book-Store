@@ -161,35 +161,21 @@ namespace GUI
             if (listViewItems.SelectedItems.Count == 0)
                 return;
 
-            Item item = (Item)listViewItems.SelectedItems[0];
+            Item curentItem = (Item)listViewItems.SelectedItems[0];
 
-            if (item.ItemCode/1000000 ==1)
+            if (curentItem.Stock > 0)
             {
-                Book book = DB.DbBooks.Find(book => book.ItemCode == item.ItemCode);
-                if (book.Stock > 0)
-                {
-                    book.Stock--;
-                    DB.DBCurentOrder.Add(book);
-                    MessageBox.Show("Item Add to order");
-                }
-                else
-                {
-                    MessageBox.Show("Item not in Stock!!");
-                }
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                var item = context.DBItems.Where(x => x.Id == curentItem.Id).FirstOrDefault();
+                item.Stock--;
+                context.SaveChanges();
+                curentItem.Stock = item.Stock;
+                DB.DBCurentOrder.Add(curentItem);
+                MessageBox.Show("Item Add to order");
             }
             else
             {
-                Journal journal = DB.DbJournals.Find(x => x.ItemCode == item.ItemCode);
-                if (journal.Stock > 0)
-                {
-                    journal.Stock--;
-                    DB.DBCurentOrder.Add(journal);
-                    MessageBox.Show("Item Add to order");
-                }
-                else
-                {
-                    MessageBox.Show("Item not in Stock!!");
-                }
+                MessageBox.Show("No Item in stock!!");
             }
             listViewItems.Items.Refresh();
         }

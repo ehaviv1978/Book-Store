@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using DLL;
 using Server;
 using System.Text.RegularExpressions;
+using System.Linq;
+
 
 
 namespace GUI
@@ -48,7 +50,10 @@ namespace GUI
                 }
                 newCustomer.Email = txtEmail.Text;
 
-                DB.DbCustomers.Add(newCustomer);
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                context.DbCustomers.Add(newCustomer);
+                context.SaveChanges();
+                DB.DbCustomers = context.DbCustomers.ToList();
                 MessageBox.Show("New Customer Add");
                 NavigationService.Navigate(new Contacts());
             }

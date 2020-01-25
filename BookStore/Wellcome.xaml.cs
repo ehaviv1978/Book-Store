@@ -31,15 +31,15 @@ namespace GUI
         public void InitializeDB()
         {
             using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-            DB.DbCustomers = context.DbCustomers.ToList<Customer>();
-            DB.DbEmployees = context.DbEmployees.ToList<Employee>();
-            DB.DbBooks = context.DbBooks.ToList<Book>();
-            DB.DbJournals = context.DbJournals.ToList<Journal>();
+            DB.DbCustomers = context.DbCustomers.ToList();
+            DB.DbEmployees = context.DbEmployees.ToList();
+            DB.DbBooks = context.DbBooks.ToList();
+            DB.DbJournals = context.DbJournals.ToList();
             DB.DbTransactions = context.DbTransactions
                 .Include(x => x.Buyer)
-                .Include(X => X.Seller).ToList<Transaction>();
-            DB.DbTransactionItems = context.DbTransactionItems.ToList<TransactionItem>();
-            DB.DBDiscounts = context.DBDiscounts.ToList<Discount>();
+                .Include(X => X.Seller).ToList();
+            DB.DbTransactionItems = context.DbTransactionItems.ToList();
+            DB.DBDiscounts = context.DBDiscounts.ToList();
         }
 
         void MainWindow_KeyDown(object sender, KeyEventArgs e)

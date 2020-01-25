@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
+
 
 namespace GUI
 {
@@ -35,7 +37,11 @@ namespace GUI
                 MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Password Change", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    MainWindow.currentEmployee.Password = passBox1.Password;
+                    using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                    var employee = context.DbEmployees.Where(x => x.PersonStoreID == MainWindow.currentEmployee.PersonStoreID).FirstOrDefault();
+                    employee.Password = passBox1.Password;
+                    context.SaveChanges();
+                    MainWindow.currentEmployee.Password = employee.Password;
                     MessageBox.Show("Password Changed");
                     NavigationService.Navigate(new StoreInventory());
                 }

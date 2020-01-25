@@ -53,11 +53,6 @@ namespace GUI
             Main.Content = new StoreInventory();
         }
 
-        private void btnRemoveItem_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new RemoveItem();
-        }
-
         private void btnContacts_Click(object sender, RoutedEventArgs e)
         {
 
