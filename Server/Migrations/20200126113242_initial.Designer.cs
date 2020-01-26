@@ -10,7 +10,7 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    [Migration("20200125062541_initial")]
+    [Migration("20200126113242_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -249,52 +249,52 @@ namespace Server
             {
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 1
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 4
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 5
                 });
             }

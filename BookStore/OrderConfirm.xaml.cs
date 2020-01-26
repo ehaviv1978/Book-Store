@@ -90,8 +90,8 @@ namespace GUI
                 using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 context.DbTransactions.Add(new Transaction()
                 {
-                    Seller = seller,
-                    Buyer = buyer,
+                    Seller = DB.DbEmployees[0],
+                    Buyer = DB.DbCustomers[0],
                     Price = totalPrice,
                     Date = DateTime.Now,
                 });

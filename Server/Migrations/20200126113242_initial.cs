@@ -45,7 +45,6 @@ namespace Server.Migrations
                     table.PrimaryKey("PK_DbPersons", x => x.Id);
                 });
 
-
             migrationBuilder.CreateTable(
                 name: "DbTransactions",
                 columns: table => new
@@ -122,11 +121,11 @@ namespace Server.Migrations
                {
                    table.PrimaryKey("PK_DbTransactionItems", x => x.Id);
                    table.ForeignKey(
-                       name: "FK_DbTransactionItems_DbTransactions_Id",
-                       column: x => x.TransactionID,
-                       principalTable: "DbTransactions",
-                       principalColumn: "Id",
-                       onDelete: ReferentialAction.Restrict);
+                      name: "FK_DbTransactionItems_DbTransactions_Id",
+                      column: x => x.TransactionID,
+                      principalTable: "DbTransactions",
+                      principalColumn: "Id",
+                      onDelete: ReferentialAction.Restrict);
                    table.ForeignKey(
                        name: "FK_DbTransactionItems_DBItems_Id",
                        column: x => x.ItemID,

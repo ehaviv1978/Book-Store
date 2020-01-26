@@ -50,7 +50,7 @@ namespace GUI
                             if (discount.PropertyValue == book.Genre.ToString())
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
@@ -59,7 +59,7 @@ namespace GUI
                             if (discount.PropertyValue == book.Author)
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
@@ -68,13 +68,13 @@ namespace GUI
                             if (discount.PropertyValue == book.YearPublished.ToString())
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
                         else
                         {
-                            book.FinalPrice = book.Price;
+                            book.FinalPrice = 5;// book.Price;
                         }
                     }
                         
