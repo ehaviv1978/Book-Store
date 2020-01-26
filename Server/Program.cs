@@ -14,15 +14,16 @@ namespace Server
         {
             using Data.BookStoreContext context = new Data.BookStoreContext();
 
-
+            //context.DbTransactionItems.RemoveRange(context.DbTransactionItems);
+            //context.DbTransactions.RemoveRange(context.DbTransactions);
             //InitializeDbBook();
             //InitializeDbJournals();
             //InitializeDbEmployees();
             //InitializeDbCustomers();
             //InitializeDBDiscounts();
             //InitializeDbTransactions();
-            //InitializeDbTransactionItem();
-            //context.SaveChanges();
+            InitializeDbTransactionItem();
+            context.SaveChanges();
 
             //List<Transaction> transactions = context.DbTransactions
             //   .Where(x => x.Seller.FirstName != "")
@@ -248,52 +249,52 @@ namespace Server
             {
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 1,
+                    TransactionID = 4,
                     ItemID = 1
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 1,
+                    TransactionID = 4,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 1,
+                    TransactionID = 4,
                     ItemID = 4
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 2,
+                    TransactionID = 5,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 2,
+                    TransactionID = 5,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 2,
+                    TransactionID = 5,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 3,
+                    TransactionID = 6,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 3,
+                    TransactionID = 6,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 3,
+                    TransactionID = 6,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 3,
+                    TransactionID = 6,
                     ItemID = 5
                 });
             }

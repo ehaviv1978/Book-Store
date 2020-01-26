@@ -17,9 +17,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for OrderConfirm.xaml
-    /// </summary>
     public partial class OrderConfirm : Page
     {
         Employee seller = new Employee();
@@ -49,20 +46,14 @@ namespace GUI
             txtItemNumber.IsReadOnly = true;
             txtItemNumber.Text = DB.DBCurentOrder.Count.ToString();
             txtTotal.Text = totalPrice.ToString();
-
         }
 
         private void comboCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboCustomer.Text = comboCustomer.SelectedItem.ToString();
-            foreach (Customer customer in DB.DbCustomers)
-            {
-                if (comboCustomer.Text == customer.FirstName + " " + customer.LastName)
-                {
-                    buyer = customer;
-                    txtPhone.Text = buyer.PhoneNumber.ToString();
-                }
-            }
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            buyer = context.DbCustomers.Where(x => (x.FirstName + " " + x.LastName) == comboCustomer.Text).FirstOrDefault();
+            txtPhone.Text = buyer.PhoneNumber.ToString();
             if (seller.PersonStoreID != 0 && buyer.PersonStoreID != 0)
             {
                 btnConfirm.IsEnabled = true;
@@ -74,13 +65,8 @@ namespace GUI
         private void ComboSeller_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboSeller.Text = ComboSeller.SelectedItem.ToString();
-            foreach (Employee employee in DB.DbEmployees)
-            {
-                if (ComboSeller.Text == employee.FirstName + " " + employee.LastName)
-                {
-                    seller = employee;
-                }
-            }
+            using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+            seller = context.DbEmployees.Where(x => (x.FirstName + " " + x.LastName) == ComboSeller.Text).FirstOrDefault();
             if (seller.PersonStoreID !=0 && buyer.PersonStoreID !=0)
             {
                 btnConfirm.IsEnabled = true;
@@ -89,13 +75,11 @@ namespace GUI
         private void btnNewCustomer_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddCustomer());
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CurrentOrder());
-
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
@@ -104,19 +88,6 @@ namespace GUI
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
-
-                //List<Item> order = new List<Item>();
-                //foreach (Item item in DB.DBCurentOrder)
-                //{
-                //    order.Add(item);
-                //}
-                //Transaction sell = new Transaction();
-                //sell.Buyer = buyer;
-                //sell.Date = DateTime.Now;
-                //sell.Seller = seller;
-                ////sell.Items = order;
-                //sell.Price = totalPrice;
-
                 context.DbTransactions.Add(new Transaction()
                 {
                     Seller = seller,
@@ -124,13 +95,11 @@ namespace GUI
                     Price = totalPrice,
                     Date = DateTime.Now,
                 });
-                //context.DbTransactions.Add(sell);
                 context.SaveChanges();
                 DB.DbTransactions = context.DbTransactions.Include(x => x.Buyer).Include(X => X.Seller).ToList();
                 DB.DBCurentOrder.Clear();
                 MessageBox.Show("Order Confirmed");
                 NavigationService.Navigate(new TransactionHistory());
-
             }
         }
     }
