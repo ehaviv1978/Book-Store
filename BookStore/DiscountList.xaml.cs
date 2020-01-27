@@ -12,12 +12,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for DiscountList.xaml
-    /// </summary>
+    
     public partial class DiscountList : Page
     {
         public DiscountList()
@@ -35,7 +35,6 @@ namespace GUI
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new StoreInventory());
-
         }
 
         private void listViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,15 +54,16 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Remove Discount", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                context.DBDiscounts.Remove((Discount)listViewItems.SelectedItem);
                 DB.DBDiscounts.Remove((Discount)listViewItems.SelectedItem);
-                foreach (Book book in DB.DbBooks)
+                foreach (Item item in context.DBItems)
                 {
-                    book.Discount = 0;
+                    item.Discount = 0;
                 }
-                foreach (Journal journal in DB.DbJournals)
-                {
-                    journal.Discount = 0;
-                }
+                context.SaveChanges();
+                DB.DbBooks = context.DbBooks.ToList();
+                DB.DbJournals = context.DbJournals.ToList();
                 listViewItems.Items.Refresh();
                 MessageBox.Show("Discount Removed");
             }

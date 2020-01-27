@@ -39,18 +39,18 @@ namespace GUI
 
         private void CalculateDiscounts()
         {
-            foreach (Book book in DB.DbBooks)
+            foreach (Discount discount in DB.DBDiscounts)
             {
-                foreach (Discount discount in DB.DBDiscounts)
-                {
-                    if (discount.Percent > book.Discount)
+                foreach (Book book in DB.DbBooks)
+                    {
+                    if (discount.Percent >= book.Discount)
                     {
                         if (discount.Property == DiscountField.BGenre)
                         {
                             if (discount.PropertyValue == book.Genre.ToString())
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
@@ -59,7 +59,7 @@ namespace GUI
                             if (discount.PropertyValue == book.Author)
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
@@ -68,23 +68,19 @@ namespace GUI
                             if (discount.PropertyValue == book.YearPublished.ToString())
                             {
                                 book.Discount = discount.Percent;
-                                book.FinalPrice = 5;// book.Price * (100 - book.Discount) / 100;
+                                book.FinalPrice = book.Price * (100 - book.Discount) / 100;
                                 book.FinalPrice = Math.Round(book.FinalPrice, 2);
                             }
                         }
                         else
                         {
-                            book.FinalPrice = 5;// book.Price;
+                            book.FinalPrice = book.Price;
                         }
                     }
-                        
                 }
-            }
-            foreach (Journal journal in DB.DbJournals)
-            {
-                foreach (Discount discount in DB.DBDiscounts)
-                {
-                    if (discount.Property == DiscountField.JGenre && discount.Percent > journal.Discount)
+                foreach (Journal journal in DB.DbJournals)
+                {            
+                    if (discount.Property == DiscountField.JGenre && discount.Percent >= journal.Discount)
                     {
                         if (discount.PropertyValue == journal.Genre.ToString())
                         {

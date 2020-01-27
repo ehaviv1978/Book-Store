@@ -12,12 +12,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DLL;
 using Server;
+using System.Linq;
+
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for CurrentOrder.xaml
-    /// </summary>
     public partial class CurrentOrder : Page
     {
         public CurrentOrder()
@@ -48,25 +47,21 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Cancel Order", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 foreach (Item item in DB.DBCurentOrder)
                 {
-                    foreach (Book book in DB.DbBooks)
+                    foreach (Item item1 in context.DBItems)
                     {
-                        if (item.ItemCode == book.ItemCode)
+                        if(item.ItemCode == item1.ItemCode)
                         {
-                            book.Stock++;
-                            break;
-                        }
-                    }
-                    foreach (Journal jouranl in DB.DbJournals)
-                    {
-                        if (item.ItemCode == jouranl.ItemCode)
-                        {
-                            jouranl.Stock++;
+                            item1.Stock++;
                             break;
                         }
                     }
                 }
+                context.SaveChanges();
+                DB.DbBooks = context.DbBooks.ToList();
+                DB.DbJournals = context.DbJournals.ToList();
                 DB.DBCurentOrder.Clear();
                 MessageBox.Show("Order Canceled");
                 listViewItems.Items.Refresh();
@@ -81,31 +76,25 @@ namespace GUI
         {
             if (listViewItems.SelectedItems.Count == 0)
                 return;
-            Item selectedItem = (Item)listViewItems.SelectedItems[0];
-            foreach (Item item in DB.DBCurentOrder)
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Cancel Order", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
             {
-                if (selectedItem.ItemCode == item.ItemCode)
+                using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
+                Item selectedItem = (Item)listViewItems.SelectedItems[0];
+                foreach (Item item in context.DBItems)
                 {
-                    DB.DBCurentOrder.Remove(item);
-                    break;
+                    if (selectedItem.ItemCode== item.ItemCode)
+                    {
+                        item.Stock++;
+                        DB.DBCurentOrder.Remove(selectedItem);
+                        break;
+                    }
                 }
+                context.SaveChanges();
+                DB.DbBooks = context.DbBooks.ToList();
+                DB.DbJournals = context.DbJournals.ToList();
             }
-            foreach (Book book in DB.DbBooks)
-            {
-                if (selectedItem.ItemCode == book.ItemCode)
-                {
-                    book.Stock++;
-                    break;
-                }
-            }
-            foreach (Journal jouranl in DB.DbJournals)
-            {
-                if (selectedItem.ItemCode == jouranl.ItemCode)
-                {
-                    jouranl.Stock++;
-                    break;
-                }
-            }
+            
             if (DB.DBCurentOrder.Count == 0)
             {
                 btnConfirmOrder.IsEnabled = false;
