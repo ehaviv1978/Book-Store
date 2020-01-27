@@ -75,12 +75,7 @@ namespace Server.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransactionId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TransactionId");
 
                     b.ToTable("DBItems");
 
@@ -133,7 +128,7 @@ namespace Server.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BuyerId")
+                    b.Property<int>("BuyerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -142,14 +137,10 @@ namespace Server.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("SellerId")
+                    b.Property<int>("SellerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BuyerId");
-
-                    b.HasIndex("SellerId");
 
                     b.ToTable("DbTransactions");
                 });
@@ -229,24 +220,6 @@ namespace Server.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Employee");
-                });
-
-            modelBuilder.Entity("DLL.Item", b =>
-                {
-                    b.HasOne("DLL.Transaction", null)
-                        .WithMany("Items")
-                        .HasForeignKey("TransactionId");
-                });
-
-            modelBuilder.Entity("DLL.Transaction", b =>
-                {
-                    b.HasOne("DLL.Customer", "Buyer")
-                        .WithMany()
-                        .HasForeignKey("BuyerId");
-
-                    b.HasOne("DLL.Employee", "Seller")
-                        .WithMany()
-                        .HasForeignKey("SellerId");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,6 +15,7 @@ namespace Server
         public static List<Employee> DbEmployees = new List<Employee>();
         public static List<Transaction> DbTransactions = new List<Transaction>();
         public static List<TransactionItem> DbTransactionItems = new List<TransactionItem>();
+        public static List<TransactionShow> transactionShows = new List<TransactionShow>();
     }
    
 }

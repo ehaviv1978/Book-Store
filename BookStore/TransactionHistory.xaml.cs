@@ -12,51 +12,31 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Server;
 using DLL;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for TransactionHistory.xaml
-    /// </summary>
+   
     public partial class TransactionHistory : Page
     {
-        //public struct STransaction { public string seller;public string buyer; public int phoneNumber;
-        //    public DateTime date; public double price; }
-        //List<STransaction> sTransactions = new List<STransaction>();
-
+        
         public TransactionHistory()
         {
             InitializeComponent();
-            //initializeSTransaction();
             radioEmployee.IsChecked = true;
-            listViewItems.ItemsSource = DB.DbTransactions;
+            //listViewItems.ItemsSource = DB.transactionShows;
             foreach (Employee employee in DB.DbEmployees)
             {
                 comboEmployee.Items.Add(employee.FirstName + " " + employee.LastName);
             }
-            //listViewItems.ItemsSource = sTransactions;
         }
-
-        //private void initializeSTransaction()
-        //{
-        //    foreach (Transaction transaction in DB.DbTransactions)
-        //    {
-        //        STransaction sTransaction = new STransaction();
-        //        sTransaction.seller = "eran";// transaction.Seller.FirstName + " " + transaction.Seller.LastName;
-        //        sTransaction.buyer = transaction.Buyer.FirstName + " " + transaction.Buyer.LastName;
-        //        sTransaction.date = transaction.Date;
-        //        sTransaction.price = 99;// transaction.Price;
-        //        sTransaction.phoneNumber = transaction.Buyer.PhoneNumber;
-        //        sTransactions.Add(sTransaction);
-        //    }
-        //    //sTransactions.Clear();
-        //}
 
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (listViewItems.SelectedItems.Count > 0)
             {
-                Transaction transaction = (Transaction)listViewItems.SelectedItems[0];
+                TransactionShow transaction = (TransactionShow)listViewItems.SelectedItems[0];
                 MainWindow.curentTransaction = transaction;
                 NavigationService.Navigate(new TransactionInfo());
             }
@@ -72,12 +52,12 @@ namespace GUI
         {
             if (comboEmployee.SelectedIndex == -1)
             {
-                listViewItems.ItemsSource = DB.DbTransactions;
+                listViewItems.ItemsSource = DB.transactionShows;
                 return;
             }
             listViewItems.ItemsSource = null;
-            List<Transaction> searchList = new List<Transaction>();
-            foreach (Transaction transaction in DB.DbTransactions)
+            List<TransactionShow> searchList = new List<TransactionShow>();
+            foreach (TransactionShow transaction in DB.transactionShows)
             {
                 if ((transaction.Seller.FirstName + " " + transaction.Seller.LastName) == comboEmployee.SelectedItem.ToString())
                 {
@@ -95,7 +75,7 @@ namespace GUI
             txtSearchCoustomer.IsEnabled = true;
             txtSearchCoustomer.Visibility = Visibility.Visible;
 
-            listViewItems.ItemsSource = DB.DbTransactions;
+            listViewItems.ItemsSource = DB.transactionShows;
             txtSearchCoustomer.Text = "";
 
         }
@@ -108,15 +88,15 @@ namespace GUI
             txtSearchCoustomer.IsEnabled = false;
             txtSearchCoustomer.Visibility = Visibility.Hidden;
 
-            listViewItems.ItemsSource = DB.DbTransactions;
+            listViewItems.ItemsSource = DB.transactionShows;
             comboEmployee.SelectedIndex = -1;
         }
 
         private void txtSearchCoustomer_TextChanged(object sender, TextChangedEventArgs e)
         {
             listViewItems.ItemsSource = null;
-            List<Transaction> searchList = new List<Transaction>();
-            foreach (Transaction transaction in DB.DbTransactions)
+            List<TransactionShow> searchList = new List<TransactionShow>();
+            foreach (TransactionShow transaction in DB.transactionShows)
             {
                 string name = transaction.Buyer.FirstName.ToLower() + transaction.Buyer.LastName.ToLower();
                 if (name.Contains(txtSearchCoustomer.Text.ToLower().Replace(" ", "")))

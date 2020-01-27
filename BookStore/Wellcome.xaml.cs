@@ -35,11 +35,20 @@ namespace GUI
             DB.DbEmployees = context.DbEmployees.ToList();
             DB.DbBooks = context.DbBooks.ToList();
             DB.DbJournals = context.DbJournals.ToList();
-            DB.DbTransactions = context.DbTransactions
-                .Include(x => x.Buyer)
-                .Include(X => X.Seller).ToList();
+            DB.DbTransactions = context.DbTransactions.ToList();
             DB.DbTransactionItems = context.DbTransactionItems.ToList();
             DB.DBDiscounts = context.DBDiscounts.ToList();
+            foreach (Transaction transaction in DB.DbTransactions)
+            {
+                DB.transactionShows.Add(new TransactionShow
+                {
+                    Id = transaction.Id,
+                    Buyer = context.DbCustomers.Where(x => x.Id == transaction.BuyerId).FirstOrDefault(),
+                    Seller = context.DbEmployees.Where(x => x.Id == transaction.SellerId).FirstOrDefault(),
+                    Price = transaction.Price,
+                    Date = transaction.Date
+                }) ;
+            }
         }
 
         void MainWindow_KeyDown(object sender, KeyEventArgs e)

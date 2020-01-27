@@ -23,6 +23,34 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DBItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemCode = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Stock = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Edition = table.Column<int>(nullable: true),
+                    Discount = table.Column<int>(nullable: false),
+                    FinalPrice = table.Column<double>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    Author = table.Column<string>(nullable: true),
+                    Genre = table.Column<int>(nullable: true),
+                    YearPublished = table.Column<int>(nullable: true),
+                    Pages = table.Column<int>(nullable: true),
+                    ISBN = table.Column<long>(nullable: true),
+                    Journal_Genre = table.Column<int>(nullable: true),
+                    PrintDate = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DBItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DbPersons",
                 columns: table => new
                 {
@@ -45,15 +73,14 @@ namespace Server.Migrations
                     table.PrimaryKey("PK_DbPersons", x => x.Id);
                 });
 
-
             migrationBuilder.CreateTable(
                 name: "DbTransactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SellerId = table.Column<int>(nullable: true),
-                    BuyerId = table.Column<int>(nullable: true),
+                    SellerId = table.Column<int>(nullable: false),
+                    BuyerId = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     Price = table.Column<double>(nullable: false)
                 },
@@ -75,41 +102,6 @@ namespace Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DBItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemCode = table.Column<long>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Stock = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Edition = table.Column<int>(nullable: true),
-                    Discount = table.Column<int>(nullable: false),
-                    FinalPrice = table.Column<double>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    TransactionId = table.Column<int>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
-                    Genre = table.Column<int>(nullable: true),
-                    YearPublished = table.Column<int>(nullable: true),
-                    Pages = table.Column<int>(nullable: true),
-                    ISBN = table.Column<long>(nullable: true),
-                    Journal_Genre = table.Column<int>(nullable: true),
-                    PrintDate = table.Column<DateTime>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DBItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DBItems_DbTransactions_TransactionId",
-                        column: x => x.TransactionId,
-                        principalTable: "DbTransactions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                name: "DbTransactionItems",
                columns: table => new
                {
@@ -122,33 +114,18 @@ namespace Server.Migrations
                {
                    table.PrimaryKey("PK_DbTransactionItems", x => x.Id);
                    table.ForeignKey(
-                       name: "FK_DbTransactionItems_DbTransactions_Id",
+                       name: "FK_DbTransactionItems_TransactionID",
                        column: x => x.TransactionID,
                        principalTable: "DbTransactions",
                        principalColumn: "Id",
                        onDelete: ReferentialAction.Restrict);
                    table.ForeignKey(
-                       name: "FK_DbTransactionItems_DBItems_Id",
+                       name: "FK_DbTransactionItems_DbItems_ItemId",
                        column: x => x.ItemID,
                        principalTable: "DBItems",
                        principalColumn: "Id",
                        onDelete: ReferentialAction.Restrict);
                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DBItems_TransactionId",
-                table: "DBItems",
-                column: "TransactionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DbTransactions_BuyerId",
-                table: "DbTransactions",
-                column: "BuyerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DbTransactions_SellerId",
-                table: "DbTransactions",
-                column: "SellerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -160,13 +137,13 @@ namespace Server.Migrations
                 name: "DBItems");
 
             migrationBuilder.DropTable(
+                name: "DbPersons");
+
+            migrationBuilder.DropTable(
                 name: "DbTransactionItems");
 
             migrationBuilder.DropTable(
                 name: "DbTransactions");
-
-            migrationBuilder.DropTable(
-                name: "DbPersons");
         }
     }
 }

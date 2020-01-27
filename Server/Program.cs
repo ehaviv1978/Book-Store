@@ -22,8 +22,8 @@ namespace Server
             //InitializeDbCustomers();
             //InitializeDBDiscounts();
             //InitializeDbTransactions();
-            InitializeDbTransactionItem();
-            context.SaveChanges();
+            //InitializeDbTransactionItem();
+            //context.SaveChanges();
 
             //List<Transaction> transactions = context.DbTransactions
             //   .Where(x => x.Seller.FirstName != "")
@@ -224,22 +224,22 @@ namespace Server
 
                 context.DbTransactions.Add(new Transaction()
                 {
-                    Seller = (Employee)DbEmployees[1],
-                    Buyer = (Customer)DbCustomers[0],
+                    SellerId = DbCustomers[1].Id,
+                    BuyerId = DbEmployees[0].Id,
                     Price = 45.34,
                     Date = new DateTime(2019, 1, 1),
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
-                    Seller = (Employee)DbEmployees[0],
-                    Buyer = (Customer)DbCustomers[2],
+                    SellerId = DbCustomers[0].Id,
+                    BuyerId = DbEmployees[2].Id,
                     Price = 55.20,
                     Date = new DateTime(2018, 1, 1),
                 });
                 context.DbTransactions.Add(new Transaction()
                 {
-                    Seller = (Employee)DbEmployees[2],
-                    Buyer = (Customer)DbCustomers[1],
+                    SellerId = DbCustomers[2].Id,
+                    BuyerId = DbEmployees[1].Id,
                     Price = 60.99,
                     Date = new DateTime(2017, 10, 10),
                 });
@@ -249,52 +249,52 @@ namespace Server
             {
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 1
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 4,
+                    TransactionID = 1,
                     ItemID = 4
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 5,
+                    TransactionID = 2,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 6
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 2
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 3
                 });
                 context.DbTransactionItems.Add(new TransactionItem()
                 {
-                    TransactionID = 6,
+                    TransactionID = 3,
                     ItemID = 5
                 });
             }

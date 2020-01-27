@@ -90,13 +90,31 @@ namespace GUI
                 using Server.Data.BookStoreContext context = new Server.Data.BookStoreContext();
                 context.DbTransactions.Add(new Transaction()
                 {
-                    Seller = seller,
-                    Buyer = buyer,
+                    SellerId = context.DbPersons.Where(x=>x.PersonStoreID ==seller.PersonStoreID).FirstOrDefault().Id,
+                    BuyerId = context.DbPersons.Where(x => x.PersonStoreID == buyer.PersonStoreID).FirstOrDefault().Id,
                     Price = totalPrice,
                     Date = DateTime.Now,
                 });
                 context.SaveChanges();
-                DB.DbTransactions = context.DbTransactions.Include(x => x.Buyer).Include(X => X.Seller).ToList();
+                DB.DbTransactions = context.DbTransactions.ToList();
+                DB.transactionShows.Add(new TransactionShow
+                {
+                    Id = DB.DbTransactions.Last().Id,
+                    Buyer = buyer,
+                    Seller = seller,
+                    Price = totalPrice,
+                    Date = DateTime.Now
+                });
+                foreach (Item item in DB.DBCurentOrder)
+                {
+                    context.DbTransactionItems.Add(new TransactionItem
+                    {
+                        ItemID = item.Id,
+                        TransactionID = DB.DbTransactions.Last().Id,
+                    });
+                }
+                context.SaveChanges();
+                DB.DbTransactionItems = context.DbTransactionItems.ToList();
                 DB.DBCurentOrder.Clear();
                 MessageBox.Show("Order Confirmed");
                 NavigationService.Navigate(new TransactionHistory());
